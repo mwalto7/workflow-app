@@ -15,7 +15,7 @@ class Register extends Component {
 
   onChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, [`${name}Error`]: '' });
   };
 
   onSubmit = async () => {
@@ -53,17 +53,6 @@ class Register extends Component {
       passwordError,
     } = this.state;
 
-    const errorList = [];
-    if (usernameError) {
-      errorList.push(usernameError);
-    }
-    if (emailError) {
-      errorList.push(emailError);
-    }
-    if (passwordError) {
-      errorList.push(passwordError);
-    }
-
     return (
       <Container text>
         <Header as="h1" content="Register" />
@@ -72,7 +61,7 @@ class Register extends Component {
             <Form.Input
               name="username"
               type="text"
-              label="Username"
+              label={usernameError !== '' ? usernameError : 'Username'}
               placeholder="Pick a username"
               value={username}
               onChange={this.onChange}
@@ -81,7 +70,7 @@ class Register extends Component {
             <Form.Input
               name="email"
               type="email"
-              label="Email"
+              label={emailError !== '' ? emailError : 'Username'}
               placeholder="joe.schmoe@example.com"
               value={email}
               onChange={this.onChange}
@@ -90,7 +79,7 @@ class Register extends Component {
             <Form.Input
               name="password"
               type="password"
-              label="Password"
+              label={passwordError !== '' ? passwordError : 'Username'}
               placeholder="Create a password"
               value={password}
               onChange={this.onChange}
@@ -104,12 +93,12 @@ class Register extends Component {
               onClick={this.onSubmit}
             />
           </Form>
-          {(errorList.length > 0) && (
-            <Message error list={errorList} />
-          )}
         </Segment>
         <Message>
-          Already signed up?&nbsp;<Link to="/login">Login here</Link>&nbsp;instead.
+          Already signed up?&nbsp;
+          <Link to="/login">
+            Login here
+          </Link>&nbsp;instead.
         </Message>
       </Container>
     );
