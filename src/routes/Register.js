@@ -70,7 +70,7 @@ class Register extends Component {
             <Form.Input
               name="email"
               type="email"
-              label={emailError !== '' ? emailError : 'Username'}
+              label={emailError !== '' ? emailError : 'Email'}
               placeholder="joe.schmoe@example.com"
               value={email}
               onChange={this.onChange}
@@ -79,7 +79,7 @@ class Register extends Component {
             <Form.Input
               name="password"
               type="password"
-              label={passwordError !== '' ? passwordError : 'Username'}
+              label={passwordError !== '' ? passwordError : 'Password'}
               placeholder="Create a password"
               value={password}
               onChange={this.onChange}

@@ -20,6 +20,7 @@ class Login extends Component {
     const response = await this.props.mutate({
       variables: { email, password },
     });
+
     const {
       ok,
       token,
@@ -89,14 +90,10 @@ class Login extends Component {
             />
           </Segment>
         </Form>
-        {(errorList.length > 0) && (
-          <Message error list={errorList} />
-        )}
+        {errorList.length > 0 && <Message error list={errorList} />}
         <Message>
           New to Workflow?&nbsp;
-          <Link to="/register">
-            Register Here
-          </Link>&nbsp;instead.
+          <Link to="/register">Register Here</Link>&nbsp;instead.
         </Message>
       </Container>
     );
