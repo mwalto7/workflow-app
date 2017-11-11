@@ -1,42 +1,11 @@
 import React from 'react';
-import { gql, graphql } from 'react-apollo';
-import { Card, Feed, Grid, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import Navbar from './Navbar';
 
-const Home = ({ data: { allUsers = [] } }) => (
+const Home = () => (
   <Container>
-    <Grid centered>
-      <Card>
-        <Card.Content>
-          <Card.Header>Recent Activity</Card.Header>
-        </Card.Content>
-        <Card.Content>
-          <Feed>
-            {allUsers.map(user => (
-              <Feed.Event key={user.id}>
-                <Feed.Label icon="user" />
-                <Feed.Content>
-                  <Feed.Date content="1 day ago" />
-                  <Feed.Summary>
-                    <a>{user.username}</a> just joined Workflow.
-                  </Feed.Summary>
-                </Feed.Content>
-              </Feed.Event>
-            ))}
-          </Feed>
-        </Card.Content>
-      </Card>
-    </Grid>
+    <Navbar />
   </Container>
 );
 
-const getAllUsers = gql`
-  {
-    allUsers {
-      id
-      username
-      email
-    }
-  }
-`;
-
-export default graphql(getAllUsers)(Home);
+export default Home;
