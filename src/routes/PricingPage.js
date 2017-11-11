@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, List, Container } from 'semantic-ui-react';
+import { Card, List, Container, Segment, Header } from 'semantic-ui-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -7,6 +7,16 @@ const PricingPage = () => (
   <div>
     <Container>
       <Navbar />
+      <Segment basic textAlign="center">
+        <Header
+          as="h1"
+          content="Pricing"
+          style={{
+            fontSize: '4em',
+            fontWeight: 'bold',
+          }}
+        />
+      </Segment>
       <Card.Group>
         <Card
           href="/register"
