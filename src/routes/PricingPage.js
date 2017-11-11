@@ -23,7 +23,7 @@ const PricingPage = () => (
         <Card
           href="/register"
           header="Yearly"
-          description="Access to all featuers for large projects."
+          description="Access to all featuers best for large projects."
           meta="$125 per Year"
         />
         <Card
@@ -35,7 +35,7 @@ const PricingPage = () => (
       </Card.Group>
       <List size="huge">
         <List.Item>
-          Features
+          Features Included
           <List.List>
             <List.Item>
               <List.Icon name="time" />
