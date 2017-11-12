@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { extendObservable } from 'mobx';
-import { Container, Segment, Form, Header, Message } from 'semantic-ui-react';
+import { Segment, Form, Header, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { gql, graphql } from 'react-apollo';
+import Layout from './Layout';
 
 class Login extends Component {
   constructor(props) {
@@ -57,26 +58,24 @@ class Login extends Component {
     }
 
     return (
-      <Container text>
-        <Header as="h1" content="Sign in" />
+      <Layout text>
+        <Header as="h1" content="Log in" />
         <Form>
-          <Segment>
+          <Segment textAlign="left">
             <Form.Input
+              label="Email"
               name="email"
               type="email"
-              icon="user"
-              iconPosition="left"
-              placeholder="Email"
+              placeholder="joe.schmoe@example.com"
               value={email}
               onChange={this.onChange}
               error={!!emailError}
             />
             <Form.Input
+              label="Password"
               name="password"
               type="password"
-              icon="mail"
-              iconPosition="left"
-              placeholder="Password"
+              placeholder="Enter your password"
               value={password}
               onChange={this.onChange}
               error={!!passwordError}
@@ -93,9 +92,9 @@ class Login extends Component {
         {errorList.length > 0 && <Message error list={errorList} />}
         <Message>
           New to Workflow?&nbsp;
-          <Link to="/register">Register Here</Link>&nbsp;instead.
+          <Link to="/register">Register Here</Link>&nbsp;.
         </Message>
-      </Container>
+      </Layout>
     );
   }
 }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Container, Menu } from 'semantic-ui-react';
 
 class Navbar extends Component {
-  state = { activeItem: 'about' };
+  state = { activeItem: '' };
 
   handleClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -11,56 +11,75 @@ class Navbar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <Menu secondary borderless stackable size="huge">
-        <Menu.Menu position="left">
-          <Menu.Item
-            name="about"
-            content="About"
-            active={activeItem === 'about'}
-            onClick={this.handleItemClick}
-            as={Link}
-            to="/about"
-          />
-          <Menu.Item
-            name="features"
-            content="Features"
-            active={activeItem === 'features'}
-            onClick={this.handleItemClick}
-            as={Link}
-            to="/features"
-          />
-          <Menu.Item
-            name="pricing"
-            content="Pricing"
-            active={activeItem === 'pricing'}
-            onClick={this.handleItemClick}
-            as={Link}
-            to="/pricing"
-          />
-          <Menu.Item
-            name="contact"
-            content="Contact Us"
-            active={activeItem === 'contact'}
-            onClick={this.handleItemClick}
-            as={Link}
-            to="/contact"
-          />
-        </Menu.Menu>
-        <Menu.Menu position="right">
-          <Menu.Item
-            name="register"
-            content="Sign up"
-            as={Link}
-            to="/register"
-          />
-          <Menu.Item
-            name="login"
-            content="Login"
-            as={Link}
-            to="/login"
-          />
-        </Menu.Menu>
-      </Menu>
+      <Container>
+        <Menu borderless fluid pointing secondary stackable size="large">
+          <Menu.Menu position="left">
+            <Menu.Item
+              header
+              as={NavLink}
+              to="/"
+              index={1}
+              content="Workflow"
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/about"
+              index={2}
+              content="About"
+              name="about"
+              active={activeItem === 'about'}
+              onClick={this.handleClick}
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/features"
+              index={3}
+              content="Features"
+              name="features"
+              active={activeItem === 'features'}
+              onClick={this.handleClick}
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/pricing"
+              index={4}
+              content="Pricing"
+              name="pricing"
+              active={activeItem === 'pricing'}
+              onClick={this.handleClick}
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/contact"
+              index={5}
+              content="Contact us"
+              name="contact"
+              active={activeItem === 'contact'}
+              onClick={this.handleClick}
+            />
+          </Menu.Menu>
+          <Menu.Menu position="right">
+            <Menu.Item
+              as={NavLink}
+              to="/register"
+              index={6}
+              content="Sign up"
+              name="register"
+              active={activeItem === 'register'}
+              onClick={this.handleClick}
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/login"
+              index={7}
+              content="Log in"
+              name="login"
+              active={activeItem === 'login'}
+              onClick={this.handleClick}
+            />
+          </Menu.Menu>
+        </Menu>
+      </Container>
     );
   }
 }
