@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from './Layout';
 
-const Home = () => (
+const About = () => (
   <Layout>
-    <h1>Home page!</h1>
+    <h1>About page!</h1>
   </Layout>
 );
 
-export default Home;
+export default About;
