@@ -53,7 +53,7 @@ class Navbar extends Component {
             <Menu.Item
               as={NavLink}
               to="/register"
-              index={6}
+              index={5}
               content="Sign up"
               name="register"
               active={activeItem === 'register'}
@@ -62,7 +62,7 @@ class Navbar extends Component {
             <Menu.Item
               as={NavLink}
               to="/login"
-              index={7}
+              index={6}
               content="Log in"
               name="login"
               active={activeItem === 'login'}
