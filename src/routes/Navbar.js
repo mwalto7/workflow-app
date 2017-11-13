@@ -23,17 +23,8 @@ class Navbar extends Component {
             />
             <Menu.Item
               as={NavLink}
-              to="/about"
-              index={2}
-              content="About"
-              name="about"
-              active={activeItem === 'about'}
-              onClick={this.handleClick}
-            />
-            <Menu.Item
-              as={NavLink}
               to="/features"
-              index={3}
+              index={2}
               content="Features"
               name="features"
               active={activeItem === 'features'}
@@ -42,7 +33,7 @@ class Navbar extends Component {
             <Menu.Item
               as={NavLink}
               to="/pricing"
-              index={4}
+              index={3}
               content="Pricing"
               name="pricing"
               active={activeItem === 'pricing'}
@@ -51,7 +42,7 @@ class Navbar extends Component {
             <Menu.Item
               as={NavLink}
               to="/contact"
-              index={5}
+              index={4}
               content="Contact us"
               name="contact"
               active={activeItem === 'contact'}
