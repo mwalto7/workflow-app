@@ -8,8 +8,6 @@ import Pricing from './Pricing';
 import Contact from './Contact';
 import Register from './Register';
 import Login from './Login';
-import PricingPage from './PricingPage';
-import FeaturesPage from './FeaturesPage';
 
 
 export default () => (
