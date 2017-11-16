@@ -23,14 +23,13 @@ const Navbar = () => (
           index={1}
           content="Workflow"
         />
-        <Menu.Item as={NavLink} to="/about" index={2} content="About" />
-        <Menu.Item as={NavLink} to="/features" index={3} content="Features" />
-        <Menu.Item as={NavLink} to="/pricing" index={4} content="Pricing" />
-        <Menu.Item as={NavLink} to="/contact" index={5} content="Contact us" />
+        <Menu.Item as={NavLink} to="/features" index={2} content="Features" />
+        <Menu.Item as={NavLink} to="/pricing" index={3} content="Pricing" />
+        <Menu.Item as={NavLink} to="/contact" index={4} content="Contact us" />
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item as={NavLink} to="/register" index={6} content="Sign up" />
-        <Menu.Item as={NavLink} to="/login" index={7} content="Log in" />
+        <Menu.Item as={NavLink} to="/register" index={5} content="Sign up" />
+        <Menu.Item as={NavLink} to="/login" index={6} content="Log in" />
       </Menu.Menu>
     </Menu>
   </Container>
