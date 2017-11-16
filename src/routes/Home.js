@@ -4,9 +4,6 @@ import Layout from './Layout';
 
 const Home = () => (
   <Layout>
-<<<<<<< HEAD
-    <h1>Home Page!</h1>
-=======
     <Segment basic>
       <Header
         as="h1"
@@ -17,7 +14,6 @@ const Home = () => (
         }}
       />
     </Segment>
->>>>>>> de541ed8feadbac01622100d5b394f045cc67199
   </Layout>
 );
 
