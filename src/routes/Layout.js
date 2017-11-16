@@ -9,7 +9,7 @@ const Layout = props => (
       <Navbar />
     </header>
     <Container
-      style={{ margin: '5em auto' }}
+      style={{ padding: '5em', minHeight: '93vh' }}
       textAlign="center"
       text={props.text}
     >
