@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Grid, Container, List, Header, Segment } from 'semantic-ui-react';
 
 const Footer = () => (
@@ -10,11 +10,11 @@ const Footer = () => (
           <Grid.Column width={3}>
             <Header as="h4" content="About" />
             <List link>
-              <List.Item as={NavLink} to="/" content="Home" />
-              <List.Item as={NavLink} to="/features" content="Features" />
-              <List.Item as={NavLink} to="/pricing" content="Pricing" />
-              <List.Item as={NavLink} to="/register" content="Register" />
-              <List.Item as={NavLink} to="/login" content="Log In" />
+              <List.Item as={Link} to="/" content="Home" />
+              <List.Item as={Link} to="/features" content="Features" />
+              <List.Item as={Link} to="/pricing" content="Pricing" />
+              <List.Item as={Link} to="/register" content="Register" />
+              <List.Item as={Link} to="/login" content="Log In" />
             </List>
           </Grid.Column>
           <Grid.Column width={3}>

@@ -1,20 +1,27 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Segment } from 'semantic-ui-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
+
+const style = {
+  padding: '5em',
+  minHeight: '93vh',
+};
 
 const Layout = props => (
   <div>
     <header>
       <Navbar />
     </header>
-    <Container
-      style={{ padding: '5em', minHeight: '93vh' }}
+    <Segment
+      basic
+      as={Container}
+      style={style}
       textAlign="center"
       text={props.text}
     >
       {props.children}
-    </Container>
+    </Segment>
     <footer>
       <Footer />
     </footer>
