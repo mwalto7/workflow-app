@@ -1,37 +1,39 @@
 import React from 'react';
-import { Segment, Container, Grid, Header, List } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+import { Grid, Container, List, Header, Segment } from 'semantic-ui-react';
 
 const Footer = () => (
-  <Segment inverted vertical style={{ padding: '5em 0em' }}>
+  <Segment vertical style={{ padding: '5em 0em' }}>
     <Container>
-      <Grid divided inverted stackable>
+      <Grid divided stackable>
         <Grid.Row>
           <Grid.Column width={3}>
-            <Header inverted as="h4" content="About" />
-            <List link inverted>
-              <List.Item as="a">Sitemap</List.Item>
-              <List.Item as="a">Contact Us</List.Item>
-              <List.Item as="a">Religious Ceremonies</List.Item>
-              <List.Item as="a">Gazebo Plans</List.Item>
+            <Header as="h4" content="About" />
+            <List link>
+              <List.Item as={NavLink} to="/" content="Home" />
+              <List.Item as={NavLink} to="/features" content="Features" />
+              <List.Item as={NavLink} to="/pricing" content="Pricing" />
+              <List.Item as={NavLink} to="/register" content="Register" />
+              <List.Item as={NavLink} to="/login" content="Log In" />
             </List>
           </Grid.Column>
           <Grid.Column width={3}>
-            <Header inverted as="h4" content="Services" />
-            <List link inverted>
-              <List.Item as="a">Banana Pre-Order</List.Item>
-              <List.Item as="a">DNA FAQ</List.Item>
-              <List.Item as="a">How To Access</List.Item>
-              <List.Item as="a">Favorite X-Men</List.Item>
+            <Header as="h4" content="Services" />
+            <List link>
+              <List.Item>Team Connectivity</List.Item>
+              <List.Item>Employee Management</List.Item>
+              <List.Item>Hour Tracking</List.Item>
+              <List.Item>Project Oversight</List.Item>
             </List>
           </Grid.Column>
           <Grid.Column width={7}>
-            <Header as="h4" inverted>
-              Footer Header
-            </Header>
-            <p>
-              Extra space for a call to action inside the footer that could help
-              re-engage users.
-            </p>
+            <Header as="h4">Contact Information</Header>
+            <List link>
+              <List.Item>workteam@workflow-app.io</List.Item>
+              <List.Item>mason@workflow-app.io</List.Item>
+              <List.Item>michael@workflow-app.io</List.Item>
+              <List.Item>ken@workflow-app.io</List.Item>
+            </List>
           </Grid.Column>
         </Grid.Row>
       </Grid>
