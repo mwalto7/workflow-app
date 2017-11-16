@@ -8,7 +8,7 @@ const style = {
   minHeight: '93vh',
 };
 
-const Layout = props => (
+const Layout = ({ text, children }) => (
   <div>
     <header>
       <Navbar />
@@ -18,9 +18,9 @@ const Layout = props => (
       as={Container}
       style={style}
       textAlign="center"
-      text={props.text}
+      text={text}
     >
-      {props.children}
+      {children}
     </Segment>
     <footer>
       <Footer />
