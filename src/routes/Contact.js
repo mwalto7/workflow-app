@@ -1,10 +1,10 @@
 import React from 'react';
 import Layout from './Layout';
 
-const Home = () => (
+const Contact = () => (
   <Layout>
-    <h1>Home Page!</h1>
+    <h1>Contact Page!</h1>
   </Layout>
 );
 
-export default Home;
+export default Contact;
