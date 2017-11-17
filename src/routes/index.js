@@ -7,6 +7,10 @@ import Pricing from './Pricing';
 import Contact from './Contact';
 import Register from './Register';
 import Login from './Login';
+import AccountHome from './AccountHome';
+import AccountCalendar from './AccountCalendar';
+import AccountHours from './AccountHours';
+import AccountSettings from './AccountSettings';
 
 export default () => (
   <BrowserRouter>
@@ -17,6 +21,10 @@ export default () => (
       <Route path="/contact" component={Contact} />
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
+      <Route path="/AccountHome" component={AccountHome} />
+      <Route path="/AccountCalendar" component={AccountCalendar} />
+      <Route path="/AccountHours" component={AccountHours} />
+      <Route path="/AccountSettings" component={AccountSettings} />
     </Switch>
   </BrowserRouter>
 );

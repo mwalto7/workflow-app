@@ -52,10 +52,7 @@ const Home = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated="right" width={6}>
-            <Image
-              size="large"
-              src="/assets/Workflow.png"
-            />
+            <Image size="large" src="/assets/Workflow.png" />
           </Grid.Column>
         </Grid.Row>
       </Grid>
