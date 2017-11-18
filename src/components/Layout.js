@@ -3,11 +3,6 @@ import { Container, Segment } from 'semantic-ui-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-const style = {
-  padding: '5em',
-  minHeight: '93vh',
-};
-
 const Layout = props => (
   <div>
     <header>
@@ -16,7 +11,7 @@ const Layout = props => (
     <Segment
       basic
       as={Container}
-      style={style}
+      style={{ margin: 0, ...props.style }}
       textAlign="center"
       text={props.text}
     >
