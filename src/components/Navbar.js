@@ -13,32 +13,74 @@ const style = {
   width: '100%',
 };
 
+const MenuItems = [
+  {
+    as: NavLink,
+    to: '/',
+    content: 'Workflow',
+    index: '1',
+    exact: true,
+  },
+  {
+    as: NavLink,
+    to: '/features',
+    content: 'Features',
+    index: '2',
+  },
+  {
+    as: NavLink,
+    to: '/pricing',
+    content: 'Pricing',
+    index: '3',
+  },
+  {
+    as: NavLink,
+    to: '/contact',
+    content: 'Contact Us',
+    index: '4',
+  },
+];
+
+const LoginTab = [
+  {
+    as: NavLink,
+    to: '/register',
+    content: 'Sign Up',
+    index: '5',
+  },
+  {
+    as: NavLink,
+    to: '/login',
+    content: 'Log In',
+    index: '6',
+  },
+];
+
+const NavBarLink = props => (
+  <Menu.Menu position={props.position}>
+    {props.items.map(item => (
+      <Menu.Item
+        as={item.as}
+        to={item.to}
+        content={item.content}
+        index={item.index}
+        exact={item.exact}
+        style={{ color: '#bfc0c0' }}
+        activeStyle={{
+          fontWeight: 'bold',
+          color: 'white',
+        }}
+      />
+    ))}
+  </Menu.Menu>
+);
+
 const Navbar = () => (
   <Container style={style}>
     <Menu borderless fluid pointing secondary stackable size="large">
       <Container>
-        <Menu.Menu position="left">
-          <Menu.Item
-            header
-            as={NavLink}
-            exact
-            to="/"
-            index={1}
-            content="Workflow"
-          />
-          <Menu.Item as={NavLink} to="/features" index={2} content="Features" />
-          <Menu.Item as={NavLink} to="/pricing" index={3} content="Pricing" />
-          <Menu.Item
-            as={NavLink}
-            to="/contact"
-            index={4}
-            content="Contact us"
-          />
-        </Menu.Menu>
-        <Menu.Menu position="right">
-          <Menu.Item as={NavLink} to="/register" index={5} content="Sign up" />
-          <Menu.Item as={NavLink} to="/login" index={6} content="Log in" />
-        </Menu.Menu>
+        <NavBarLink position="left" items={MenuItems} />
+        <NavBarLink position="right" items={LoginTab} />
       </Container>
     </Menu>
   </Container>

@@ -55,7 +55,7 @@ class Register extends Component {
     } = this.state;
 
     return (
-      <Layout text>
+      <Layout text style={{ background: '#bfc0c0' }}>
         <Header as="h1" content="Sign up" />
         <Segment textAlign="left">
           <Form>

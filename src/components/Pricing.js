@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import Layout from './Layout';
 
 const Pricing = () => (
-  <Layout>
+  <Layout style={{ background: '#4f5d75' }}>
     <Header
       as="h1"
       content="Pricing"
       style={{
-        fontSize: '4em',
+        fontSize: '6em',
         fontWeight: 'bold',
+        color: '#bfc0c0',
       }}
     />
     <Segment basic>

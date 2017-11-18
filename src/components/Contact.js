@@ -3,7 +3,7 @@ import { Header } from 'semantic-ui-react';
 import Layout from './Layout';
 
 const Contact = () => (
-  <Layout>
+  <Layout style={{ background: '#bfc0c0' }}>
     <Header
       as="h1"
       content="Contact Us"

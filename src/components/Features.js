@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item, Header, Segment } from 'semantic-ui-react';
+import { Item, Header, Segment, Container } from 'semantic-ui-react';
 import Layout from './Layout';
 
 const items = [
@@ -41,18 +41,20 @@ const items = [
 ];
 
 const FeaturesPage = () => (
-  <Layout text>
-    <Segment basic textAlign="center">
-      <Header
-        as="h1"
-        content="Features"
-        style={{
-          fontSize: '4em',
-          fontWeight: 'bold',
-        }}
-      />
-    </Segment>
-    <Item.Group divided unstackable items={items} />
+  <Layout style={{ background: '#bfc0c0' }} >
+    <Container text>
+      <Segment basic textAlign="center">
+        <Header
+          as="h1"
+          content="Features"
+          style={{
+            fontSize: '6em',
+            fontWeight: 'bold',
+          }}
+        />
+      </Segment>
+      <Item.Group divided unstackable items={items} />
+    </Container>
   </Layout>
 );
 
