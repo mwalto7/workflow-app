@@ -32,6 +32,7 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
