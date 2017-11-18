@@ -7,7 +7,7 @@ import {
 } from 'react-apollo';
 import 'semantic-ui-css/semantic.min.css';
 
-import Routes from './routes';
+import Routes from './components';
 import registerServiceWorker from './registerServiceWorker';
 
 const networkInterface = createNetworkInterface({

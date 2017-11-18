@@ -32,7 +32,6 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
-      <Link to='/AccountHome'>AccountHome</Link>
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
