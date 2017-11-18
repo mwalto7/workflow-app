@@ -5,7 +5,14 @@ import Layout from './Layout';
 
 const Pricing = () => (
   <Layout>
-    <Header as="h1" content="Pricing" />
+    <Header
+      as="h1"
+      content="Pricing"
+      style={{
+        fontSize: '4em',
+        fontWeight: 'bold',
+      }}
+    />
     <Segment basic>
       <Card.Group stackable itemsPerRow={4}>
         <Card
