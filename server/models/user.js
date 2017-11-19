@@ -47,6 +47,24 @@ export default (sequelize, DataTypes) => {
       },
     },
   );
+  User.associate = (models) => {
+    User.belongsToMany(models.Team, {
+      through: 'member', // through the member table
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+
+    // N:M because a User can belong to many Channels
+    User.belongsToMany(models.Channel, {
+      through: 'channel_member',
+      foreignKey: {
+        name: 'userId',
+        field: 'user_id',
+      },
+    });
+  };
 
   return User;
 };
