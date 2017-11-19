@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Segment, Header, Form, Message } from 'semantic-ui-react';
 import { gql, graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
-import Layout from './Layout';
 
 class Register extends Component {
   state = {
@@ -55,7 +54,7 @@ class Register extends Component {
     } = this.state;
 
     return (
-      <Layout text style={{ background: '#bfc0c0' }}>
+      <div>
         <Header as="h1" content="Sign up" />
         <Segment textAlign="left">
           <Form>
@@ -99,7 +98,7 @@ class Register extends Component {
           Already signed up?&nbsp;
           <Link to="/login">Log in</Link>&nbsp;.
         </Message>
-      </Layout>
+      </div>
     );
   }
 }

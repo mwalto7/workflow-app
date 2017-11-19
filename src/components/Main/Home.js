@@ -7,14 +7,13 @@ import {
   Icon,
   Grid,
   Image,
-  Form,
 } from 'semantic-ui-react';
-import Layout from './Layout';
+import Login from './Login';
 
 const Home = () => (
-  <Layout style={{ background: '#4f5d75', width: '100%' }}>
+  <div>
     <Segment textAlign="center" vertical>
-      <Grid>
+      <Grid stackable>
         <Grid.Column floated="left" width={10}>
           <Header
             className="Home-header"
@@ -42,33 +41,7 @@ const Home = () => (
           </Button>
         </Grid.Column>
         <Grid.Column floated="right" width={6}>
-          <Header as="h1" content="Log in" />
-          <Form>
-            <Segment textAlign="left">
-              <Form.Input
-                label="Email"
-                name="email"
-                type="email"
-                placeholder="joe.schmoe@example.com"
-                onChange={this.onChange}
-              />
-              <Form.Input
-                label="Password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                onChange={this.onChange}
-
-              />
-              <Form.Button
-                fluid
-                primary
-                type="submit"
-                content="Submit"
-                onClick={this.onSubmit}
-              />
-            </Segment>
-          </Form>
+          <Login />
         </Grid.Column>
       </Grid>
     </Segment>
@@ -91,7 +64,7 @@ const Home = () => (
         </Grid.Row>
       </Grid>
     </Segment>
-  </Layout>
+  </div>
 );
 
 export default Home;

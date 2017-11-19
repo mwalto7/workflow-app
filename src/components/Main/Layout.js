@@ -11,7 +11,13 @@ const Layout = props => (
     <Segment
       basic
       as={Container}
-      style={{ margin: 0, width: '100vw', minHeight: '100vh', ...props.style }}
+      style={{
+        background: '#4f5d75',
+        margin: 0,
+        width: '100vw',
+        minHeight: '100vh',
+        ...props.style,
+      }}
       textAlign="center"
       text={props.text}
     >

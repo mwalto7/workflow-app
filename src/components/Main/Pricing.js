@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, Segment, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import Layout from './Layout';
 
 const Pricing = () => (
-  <Layout style={{ background: '#4f5d75' }}>
+  <div>
+    {' '}
     <Header
       as="h1"
       content="Pricing"
@@ -46,7 +46,7 @@ const Pricing = () => (
         />
       </Card.Group>
     </Segment>
-  </Layout>
+  </div>
 );
 
 export default Pricing;

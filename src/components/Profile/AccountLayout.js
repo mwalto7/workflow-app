@@ -1,12 +1,6 @@
 import React from 'react';
 import { Container, Segment } from 'semantic-ui-react';
 import AccountNavbar from './AccountNavbar';
-import Footer from './Footer';
-
-const style = {
-  padding: '5em',
-  minHeight: '93vh',
-};
 
 const AccountLayout = props => (
   <div>
@@ -16,15 +10,18 @@ const AccountLayout = props => (
     <Segment
       basic
       as={Container}
-      style={style}
+      style={{
+        background: '#4f5d75',
+        margin: 0,
+        width: '100vw',
+        minHeight: '100vh',
+        ...props.style,
+        }}
       textAlign="center"
       text={props.text}
     >
       {props.children}
     </Segment>
-    <footer>
-      <Footer />
-    </footer>
   </div>
 );
 

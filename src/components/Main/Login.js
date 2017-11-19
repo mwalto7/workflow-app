@@ -4,7 +4,6 @@ import { extendObservable } from 'mobx';
 import { Segment, Form, Header, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { gql, graphql } from 'react-apollo';
-import Layout from './Layout';
 
 class Login extends Component {
   constructor(props) {
@@ -32,6 +31,7 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      this.props.history.push('/AccountHome');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -57,7 +57,7 @@ class Login extends Component {
     }
 
     return (
-      <Layout text>
+      <div>
         <Header as="h1" content="Log in" />
         <Form>
           <Segment textAlign="left">
@@ -93,7 +93,7 @@ class Login extends Component {
           New to Workflow?&nbsp;
           <Link to="/register">Register Here</Link>&nbsp;.
         </Message>
-      </Layout>
+      </div>
     );
   }
 }
