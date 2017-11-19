@@ -54,7 +54,7 @@ const FeaturesPage = () => (
           }}
         />
       </Segment>
-      <Item.Group divided unstackable items={items} />
+      <Item.Group divided unstackable items={items}/>
     </Container>
   </Layout>
 );
