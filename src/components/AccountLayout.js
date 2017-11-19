@@ -11,7 +11,6 @@ const AccountLayout = props => (
       basic
       as={Container}
       style={{
-        background: '#4f5d75',
         margin: 0,
         width: '100vw',
         minHeight: '100vh',

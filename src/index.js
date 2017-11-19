@@ -8,7 +8,7 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
-import Routes from './components/Main';
+import Routes from './components';
 import registerServiceWorker from './registerServiceWorker';
 
 const networkInterface = createNetworkInterface({

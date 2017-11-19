@@ -4,6 +4,7 @@ import { extendObservable } from 'mobx';
 import { Segment, Form, Header, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { gql, graphql } from 'react-apollo';
+import Layout from './Layout';
 
 class Login extends Component {
   constructor(props) {
@@ -21,12 +22,7 @@ class Login extends Component {
       variables: { email, password },
     });
 
-    const {
-      ok,
-      token,
-      refreshToken,
-      errors,
-    } = response.data.login;
+    const { ok, token, refreshToken, errors } = response.data.login;
 
     if (ok) {
       localStorage.setItem('token', token);
@@ -41,7 +37,7 @@ class Login extends Component {
     }
   };
 
-  onChange = (e) => {
+  onChange = e => {
     const { name, value } = e.target;
     this[name] = value;
   };
@@ -57,42 +53,52 @@ class Login extends Component {
     }
 
     return (
-      <div>
-        <Header as="h1" content="Log in" />
-        <Form>
-          <Segment textAlign="left">
-            <Form.Input
-              label="Email"
-              name="email"
-              type="email"
-              placeholder="joe.schmoe@example.com"
-              value={email}
-              onChange={this.onChange}
-              error={!!emailError}
-            />
-            <Form.Input
-              label="Password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              value={password}
-              onChange={this.onChange}
-              error={!!passwordError}
-            />
-            <Form.Button
-              fluid
-              primary
-              type="submit"
-              content="Submit"
-              onClick={this.onSubmit}
-            />
-          </Segment>
-        </Form>
-        {errorList.length > 0 && <Message error list={errorList} />}
-        <Message>
-          New to Workflow?&nbsp;
-          <Link to="/register">Register Here</Link>&nbsp;.
-        </Message>
+      <div style={{ background: '#4f5d75' }}>
+        <Layout text>
+          <h1
+            style={{
+              fontSize: '6em',
+              fontWeight: 'bold',
+              color: 'white',
+            }}
+          >
+            Log In
+          </h1>{' '}
+          <Form>
+            <Segment textAlign="left">
+              <Form.Input
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="joe.schmoe@example.com"
+                value={email}
+                onChange={this.onChange}
+                error={!!emailError}
+              />
+              <Form.Input
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={this.onChange}
+                error={!!passwordError}
+              />
+              <Form.Button
+                fluid
+                primary
+                type="submit"
+                content="Submit"
+                onClick={this.onSubmit}
+              />
+            </Segment>
+          </Form>
+          {errorList.length > 0 && <Message error list={errorList} />}
+          <Message>
+            New to Workflow?&nbsp;
+            <Link to="/register">Register Here</Link>&nbsp;.
+          </Message>
+        </Layout>
       </div>
     );
   }
