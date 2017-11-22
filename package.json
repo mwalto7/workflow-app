@@ -1,0 +1,68 @@
+{
+  "name": "workflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A web-based workflow management tool.",
+  "main": "index.js",
+  "repository": "https://github.com/mwalto7/workflow-app.git",
+  "author": {
+    "name": "Mason Walton",
+    "email": "dev.mwalto7@gmail.com",
+    "url": "https://github.com/mwalto7"
+  },
+  "contributors": [
+    {
+      "name": "Ken Vellian",
+      "email": "kvellian@gmail.com",
+      "url": "https://github.com/kvellian"
+    },
+    {
+      "name": "Michael Christian",
+      "email": "mchri18@gmail.com",
+      "url": "https://github.com/mchri18"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^1.1.7",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "enzyme": "^3.2.0",
+    "express": "^4.16.2",
+    "fbjs": "^0.8.16",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.5.1",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "merge-graphql-schemas": "^1.2.0",
+    "mobx": "^3.3.1",
+    "mobx-react": "^4.3.3",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
+    "react": "^16.0.0",
+    "react-apollo": "^1.4.16",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14",
+    "react-scrollchor": "^4.0.0",
+    "redux": "^3.7.2",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.75.1",
+    "sequelize": "^4.15.0",
+    "styled-components": "^2.2.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "server": "nodemon --exec babel-node ./server/index.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "nodemon": "^1.12.1"
+  }
+}

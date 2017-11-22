@@ -1,0 +1,18 @@
+.Hero-content {
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.Hero-header {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 4em;
+  font-weight: 400;
+  line-height: 1.25em;
+}
+
+.Hero-info {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5em;
+  color: #bfc0c0;
+}
