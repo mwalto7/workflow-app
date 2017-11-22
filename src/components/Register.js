@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Header, Form, Message } from 'semantic-ui-react';
+import { Segment, Form, Message } from 'semantic-ui-react';
 import { gql, graphql } from 'react-apollo';
 import { Link } from 'react-router-dom';
 import Layout from './Layout';
@@ -64,7 +64,7 @@ class Register extends Component {
               color: 'white',
             }}
           >
-            Sign In
+            Sign Up
           </h1>
           <Segment textAlign="left">
             <Form>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { extendObservable } from 'mobx';
-import { Segment, Form, Header, Message } from 'semantic-ui-react';
+import { Segment, Form, Message } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { gql, graphql } from 'react-apollo';
 import Layout from './Layout';
