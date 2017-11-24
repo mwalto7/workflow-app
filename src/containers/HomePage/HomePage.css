@@ -1,0 +1,38 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.Page-header {
+  min-height: 90vh;
+  background: linear-gradient(rgba(79, 93, 117, 0.9), rgba(79, 93, 117, 0.9)),
+    url('https://static.pexels.com/photos/416405/pexels-photo-416405.jpeg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.Navbar-container {
+  min-height: 4em;
+  background-color: #2d3142;
+}
+
+.Hero-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Features-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Pricing-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

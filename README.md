@@ -1,19 +1,42 @@
 # Workflow
 
-## Getting started:
-1. Download [Postgres Database](https://postgresapp.com/)
-2. Clone this repository. `cd path/to/workflow-app`, run `yarn && npm install`, and finally run
-```sh
-  (
-    export PKG=eslint-config-airbnb;
-    npm info "$PKG@latest" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g' | xargs npm install --save-dev "$PKG@latest"
-  )
-```
-2. Open two terminals and run `yarn start` in one and `yarn run server` in the other.
-3. These routes are available:
-  * `http://localhost:3000/` [Home page]
-  * `http://localhost:3000/register` [Registration form]
-  * `http://localhost:3000/login` [Login form]
-  * `http://localhost:8081/graphiql` [Graphiql endpoint]
+Workflow is a web application designed to make managing your teams and projects
+simple.
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+## Getting Started
+
+### Dependencies
+
+1. Nodejs
+2. Postgresql
+
+### Installation
+
+1. Run the following commands to get started:
+
+* ```sh
+  $ git clone https://github.com/mwalto7/workflow-app.git
+  $ cd workflow-app
+  ```
+
+2. Start the frontend:
+
+* ```sh
+  # Using yarn
+  $ yarn && yarn start
+  ```
+* ```sh
+  # Using npm
+  $ npm install && npm start
+  ```
+
+3. Open a seprate terminal and start the server:
+
+* ```sh
+  # Using yarn
+  $ yarn run server
+  ```
+* ```sh
+  # Using npm
+  $ npm run server
+  ```

@@ -5,9 +5,9 @@ import {
   ApolloProvider,
   createNetworkInterface,
 } from 'react-apollo';
+import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
-
-import Routes from './components';
+import App from './components/App/App.jsx';
 import registerServiceWorker from './registerServiceWorker';
 
 const networkInterface = createNetworkInterface({
@@ -16,11 +16,12 @@ const networkInterface = createNetworkInterface({
 
 const client = new ApolloClient({ networkInterface });
 
-const App = (
+ReactDOM.render(
   <ApolloProvider client={client}>
-    <Routes />
-  </ApolloProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ApolloProvider>,
+  document.getElementById('root'),
 );
-
-ReactDOM.render(App, document.getElementById('root'));
 registerServiceWorker();
