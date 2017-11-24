@@ -2,6 +2,13 @@
 
 ## Getting Started
 
+### Dependencies
+
+1. Nodejs
+2. Postgresql
+
+### Installation
+
 1. Run the following commands to get started:
 
 * ```sh
@@ -11,22 +18,22 @@
 
 2. Start the frontend:
 
-* Using yarn:
-  ```sh
+* ```sh
+  # Using yarn
   $ yarn && yarn start
   ```
-* Using npm:
-  ```sh
+* ```sh
+  # Using npm
   $ npm install && npm start
   ```
 
 3. Open a seprate terminal and start the server:
 
-* Using yarn:
-  ```sh
+* ```sh
+  # Using yarn
   $ yarn run server
   ```
 * ```sh
-  # npm
-  $ npm install --save && npm start
+  # Using npm
+  $ npm run server
   ```
