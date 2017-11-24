@@ -1,5 +1,8 @@
 # Workflow
 
+Workflow is a web application designed to make managing your teams and projects
+simple.
+
 ## Getting Started
 
 ### Dependencies
