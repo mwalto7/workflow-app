@@ -19,6 +19,7 @@ class Pricing extends Component {
 
     const pricingItems = [
       {
+        key: '1',
         name: 'community',
         header: 'Community',
         meta: 'FREE',
@@ -27,6 +28,7 @@ class Pricing extends Component {
           'The best way to try out workflow. Access to all features for teams with up to 20 members.',
       },
       {
+        key: '2',
         name: 'monthly',
         header: 'Monthly',
         meta: '$15/mo',
@@ -35,6 +37,7 @@ class Pricing extends Component {
           'Pay monthly. Cancel anytime. Access to all features and unlimited members.',
       },
       {
+        key: '3',
         name: 'yearly',
         header: 'Yearly',
         meta: '$125/yr',
@@ -43,6 +46,7 @@ class Pricing extends Component {
           'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sint dignissimos.',
       },
       {
+        key: '4',
         name: 'enterprise',
         header: 'Enterprise',
         meta: '$500/yr',
@@ -91,6 +95,7 @@ class Pricing extends Component {
               <Card.Group stackable itemsPerRow={4}>
                 {pricingItems.map(item => (
                   <PricingCard
+                    key={item.key}
                     name={item.name}
                     header={item.header}
                     meta={item.meta}

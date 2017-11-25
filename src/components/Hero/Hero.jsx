@@ -28,7 +28,7 @@ const Hero = () => (
         computer={8}
         largeScreen={8}
         widescreen={8}
-        only="tablet computer largeScreen wideScreen"
+        only="tablet computer"
       >
         <Segment className="Hero-form" basic textAlign="center">
           <RegistrationForm />
