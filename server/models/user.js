@@ -37,6 +37,8 @@ export default (sequelize, DataTypes) => {
           },
         },
       },
+      manager: DataTypes.STRING,
+      subscriptionType: DataTypes.STRING,
     },
     {
       hooks: {

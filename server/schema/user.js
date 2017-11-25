@@ -4,6 +4,8 @@ type User {
   username: String!
   email: String!
   teams: [Team!]!
+  manager: String!
+  subscriptionType: String!
 }
 type RegisterResponse {
   ok: Boolean!
@@ -17,7 +19,9 @@ type LoginResponse {
   errors: [Error!]
 }
 type Mutation {
-  register(username: String!, email: String!, password: String!): RegisterResponse!
+  register(username: String!, email: String!, password: String!, 
+    manager: String!, subscriptionType: String!): RegisterResponse!
+
   login(email: String!, password: String!): LoginResponse!
 }
 type Query {
