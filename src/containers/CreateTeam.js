@@ -1,7 +1,14 @@
 import React from 'react';
 import { extendObservable } from 'mobx';
 import { observer } from 'mobx-react';
-import { Message, Form, Button, Input, Container, Header } from 'semantic-ui-react';
+import {
+  Message,
+  Form,
+  Button,
+  Input,
+  Container,
+  Header
+} from 'semantic-ui-react';
 import { gql, graphql } from 'react-apollo';
 
 class CreateTeam extends React.Component {
@@ -10,15 +17,22 @@ class CreateTeam extends React.Component {
 
     extendObservable(this, {
       name: '',
-      errors: {},
+      errors: {}
     });
   }
 
   onSubmit = async () => {
     const { name } = this;
-    const response = await this.props.mutate({
-      variables: { name },
-    });
+    let response = null;
+
+    try {
+      response = await this.props.mutate({
+        variables: { name }
+      });
+    } catch (err) {
+      this.props.history.push('/login');
+      return;
+    } // handles error for unauthenticated user in the front end
 
     console.log(response);
 
@@ -36,7 +50,7 @@ class CreateTeam extends React.Component {
     }
   };
 
-  onChange = (e) => {
+  onChange = e => {
     const { name, value } = e.target;
     this[name] = value;
   };
@@ -55,12 +69,22 @@ class CreateTeam extends React.Component {
         <Header as="h2">Create a team</Header>
         <Form>
           <Form.Field error={!!nameError}>
-            <Input name="name" onChange={this.onChange} value={name} placeholder="Name" fluid />
+            <Input
+              name="name"
+              onChange={this.onChange}
+              value={name}
+              placeholder="Name"
+              fluid
+            />
           </Form.Field>
           <Button onClick={this.onSubmit}>Submit</Button>
         </Form>
         {errorList.length ? (
-          <Message error header="There was some errors with your submission" list={errorList} />
+          <Message
+            error
+            header="There was some errors with your submission"
+            list={errorList}
+          />
         ) : null}
       </Container>
     );

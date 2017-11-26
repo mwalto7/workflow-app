@@ -11,14 +11,14 @@ class Login extends Component {
     extendObservable(this, {
       email: '',
       password: '',
-      errors: {},
+      errors: {}
     });
   }
 
   onSubmit = async () => {
     const { email, password } = this;
     const response = await this.props.mutate({
-      variables: { email, password },
+      variables: { email, password }
     });
 
     const { ok, token, refreshToken, errors } = response.data.login;
@@ -26,6 +26,7 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
