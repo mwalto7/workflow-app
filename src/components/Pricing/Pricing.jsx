@@ -25,7 +25,7 @@ class Pricing extends Component {
         meta: 'FREE',
         imgSrc: '/assets/team.png',
         description:
-          'The best way to try out workflow. Access to all features for teams with up to 20 members.',
+          'The best way to try out workflow. Access to some features for teams with up to 20 members.',
       },
       {
         key: '2',
@@ -34,7 +34,7 @@ class Pricing extends Component {
         meta: '$15/mo',
         imgSrc: '/assets/team.png',
         description:
-          'Pay monthly. Cancel anytime. Access to all features and unlimited members.',
+          'Pay monthly. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
       {
         key: '3',
@@ -43,7 +43,7 @@ class Pricing extends Component {
         meta: '$125/yr',
         imgSrc: '/assets/team.png',
         description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sint dignissimos.',
+          'Pay yearly with a slight discount. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
       {
         key: '4',
@@ -52,7 +52,7 @@ class Pricing extends Component {
         meta: '$500/yr',
         imgSrc: '/assets/team.png',
         description:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut sint dignissimos.',
+          'Business account for large teams that are working together. Access to all featues of workflow for many users.',
       },
     ];
 

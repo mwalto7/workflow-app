@@ -16,10 +16,11 @@ const Hero = () => (
         <Segment className="Hero-content" basic>
           <h1 className="Hero-header">Enhance your workflow</h1>
           <p className="Hero-info">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            odio aliquid corporis numquam fuga voluptatum consequatur reiciendis
-            eaque laborum explicabo nemo qui deleniti, quas omnis velit officia.
-            Nostrum, suscipit deleniti.
+            Improve your workflow by having everything that you need in one
+            place. Manage and Discuss projects with team members and share
+            ideas. Managers can monitor progress on projects as well as set
+            goals for certain things. Workflow has many other useful featues as
+            well.
           </p>
         </Segment>
       </Grid.Column>
