@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import { gql, graphql } from 'react-apollo';
-import { Segment, Form, Dropdown } from 'semantic-ui-react';
-=======
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Segment, Form } from 'semantic-ui-react';
->>>>>>> edf6b38c9b7745d254d2ef21c0db850d57796e94
 import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
