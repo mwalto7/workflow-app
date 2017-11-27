@@ -3,6 +3,7 @@ import Sequelize from 'sequelize';
 const sequelize = new Sequelize('workflow', 'postgres', 'postgres', {
   dialect: 'postgres',
   define: { underscored: true },
+  operatorsAliases: Sequelize.Op,  
 });
 
 const models = {

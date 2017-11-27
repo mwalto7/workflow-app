@@ -1,30 +1,24 @@
 import React from 'react';
 
-import Channels from '../components/TeamPageLayout/Channels';
-import Teams from '../components/TeamPageLayout/Teams';
 import Header from '../components/TeamPageLayout/Header';
 import Messages from '../components/TeamPageLayout/Messages';
-import Input from '../components/TeamPageLayout/Input';
 import SendMessage from '../components/TeamPageLayout/SendMessage';
 import AppLayout from '../components/TeamPageLayout/AppLayout';
+import Sidebar from '../containers/Sidebar';
 
-export default () => (
-    <AppLayout>
-      <Teams teams={[{ id: 1, letter: 'B' }, { id: 2, letter: 'Q' }]} />
-      <Channels
-        teamName="Team name"
-        username="Username"
-        channels={[{ id: 1, name: 'general' }, { id: 2, name: 'random' }]}
-        users={[{ id: 1, name: 'WorkflowHelper' }, { id: 2, name: 'user1' }]}
-      />
-      <Header channelName="general" />
-      <Messages>
-        <ul className="message-list">
-          <li />
-          <li />
-        </ul>
-      </Messages>
-      <SendMessage channelName="general" />
-    </AppLayout>
-  );
-  
+
+const ViewTeam = ({ match: { params } }) => (
+  <AppLayout>
+    <Sidebar currentTeamId={params.teamId} /> // how to pass all teams dynamically
+    <Header channelName="general" />
+    <Messages>
+      <ul className="message-list">
+        <li />
+        <li />
+      </ul>
+    </Messages>
+    <SendMessage channelName="general" />
+  </AppLayout>
+);
+
+export default ViewTeam;

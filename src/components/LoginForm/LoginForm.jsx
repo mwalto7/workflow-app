@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { extendObservable } from 'mobx';
 import { Segment, Form, Message } from 'semantic-ui-react';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import './LoginForm.css';
 
 class Login extends Component {
@@ -26,7 +27,6 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
-
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
