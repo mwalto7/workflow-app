@@ -4,7 +4,7 @@ import {
   Card,
   Segment,
   Header,
-  Image,
+  Icon,
   Button,
 } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -23,7 +23,7 @@ class Pricing extends Component {
         name: 'community',
         header: 'Community',
         meta: 'FREE',
-        imgSrc: '/assets/community.png',
+        imgSrc: 'users',
         description:
           'The best way to try out workflow. Access to some features for teams with up to 20 members.',
       },
@@ -32,7 +32,7 @@ class Pricing extends Component {
         name: 'monthly',
         header: 'Monthly',
         meta: '$15/mo',
-        imgSrc: '/assets/monthly.png',
+        imgSrc: 'calendar',
         description:
           'Pay monthly. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
@@ -41,7 +41,7 @@ class Pricing extends Component {
         name: 'yearly',
         header: 'Yearly',
         meta: '$125/yr',
-        imgSrc: '/assets/yearly.gif',
+        imgSrc: 'calendar outline',
         description:
           'Pay yearly with a slight discount. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
@@ -50,7 +50,7 @@ class Pricing extends Component {
         name: 'enterprise',
         header: 'Enterprise',
         meta: '$500/yr',
-        imgSrc: '/assets/business.png',
+        imgSrc: 'briefcase',
         description:
           'Business account for large teams that are working together. Access to all featues of workflow for many users.',
       },
@@ -63,7 +63,7 @@ class Pricing extends Component {
         raised={activeItem === props.name}
         onClick={this.handleItemClick}
       >
-        <Image src={props.imgSrc}/>
+        <Icon name={props.imgSrc} size='massive' color='black' fitted/>
         <Card.Content>
           <Card.Header>{props.header}</Card.Header>
           <Card.Meta>{props.meta}</Card.Meta>
