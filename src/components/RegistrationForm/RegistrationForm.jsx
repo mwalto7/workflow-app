@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { gql, graphql } from 'react-apollo';
-import { Segment, Form } from 'semantic-ui-react';
+import { Segment, Form, Dropdown } from 'semantic-ui-react';
 import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
@@ -11,6 +11,11 @@ class RegistrationForm extends Component {
     emailError: '',
     password: '',
     passwordError: '',
+  };
+
+  onSelection = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   onChange = e => {
