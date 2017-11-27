@@ -9,8 +9,7 @@ import Sidebar from '../containers/Sidebar';
 
 const ViewTeam = ({ match: { params } }) => (
   <AppLayout>
-    {/* how to pass all teams dynamically */}
-    <Sidebar currentTeamId={params.teamId} />
+    <Sidebar currentTeamId={params.teamId} /> { /*how to pass all teams dynamically*/ }
     <Header channelName="general" />
     <Messages>
       <ul className="message-list">
