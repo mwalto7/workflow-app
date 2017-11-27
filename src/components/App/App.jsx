@@ -43,7 +43,7 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
-        <Route path="/view-team/:teamId?/:channelId?" exact component={ViewTeam} /> // how to make optional parameters 
+        <Route path="/view-team/:teamId?/:channelId?" exact component={ViewTeam} />  {/*how to make optional parameters*/}
         <PrivateRoute path="/create-team" exact component={CreateTeam} />
       </Switch>
     );

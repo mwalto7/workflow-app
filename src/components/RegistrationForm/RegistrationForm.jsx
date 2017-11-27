@@ -21,6 +21,11 @@ class RegistrationForm extends Component {
     this.setState({ [name]: value });
   };
 
+  onSelection = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+
   onChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value, [`${name}Error`]: '' });
