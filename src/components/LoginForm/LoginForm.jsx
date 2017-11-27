@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import { extendObservable } from 'mobx';
 import { Segment, Form, Message } from 'semantic-ui-react';
-import { gql, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import './LoginForm.css';
 
 class Login extends Component {
@@ -11,14 +12,14 @@ class Login extends Component {
     extendObservable(this, {
       email: '',
       password: '',
-      errors: {},
+      errors: {}
     });
   }
 
   onSubmit = async () => {
     const { email, password } = this;
     const response = await this.props.mutate({
-      variables: { email, password },
+      variables: { email, password }
     });
 
     const { ok, token, refreshToken, errors } = response.data.login;

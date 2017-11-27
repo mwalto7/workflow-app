@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { gql, graphql } from 'react-apollo';
 import { Segment, Form, Dropdown } from 'semantic-ui-react';
+=======
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { Segment, Form } from 'semantic-ui-react';
+>>>>>>> edf6b38c9b7745d254d2ef21c0db850d57796e94
 import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
@@ -11,6 +17,13 @@ class RegistrationForm extends Component {
     emailError: '',
     password: '',
     passwordError: '',
+    manager: '',
+    subscriptionType: ''
+  };
+
+  onSelection = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   onSelection = e => {
@@ -28,17 +41,19 @@ class RegistrationForm extends Component {
       usernameError: '',
       emailError: '',
       passwordError: '',
+      manager: '',
+      subscriptionType: ''
     });
 
-    const { username, email, password } = this.state;
+    const { username, email, password, manager, subscriptionType } = this.state;
     const response = await this.props.mutate({
-      variables: { username, email, password },
+      variables: { username, email, password, manager, subscriptionType }
     });
 
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      this.props.history.push('/');
+      console.log('user registered');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -56,18 +71,20 @@ class RegistrationForm extends Component {
       usernameError,
       emailError,
       passwordError,
+      manager,
+      subscriptionType
     } = this.state;
 
     const accountTypes = [
-      { key: 1, text: 'Manager', value: 'manager' },
-      { key: 2, text: 'Employee', value: 'employee' },
+      { key: 1, text: 'Manager', name: 'manager', value: 'manager' },
+      { key: 2, text: 'Employee', name: 'employee', value: 'employee' }
     ];
 
     const subscriptionOptions = [
-      { key: 1, text: 'Community', value: 'community' },
-      { key: 2, text: 'Monthly', value: 'monthly' },
-      { key: 3, text: 'Yearly', value: 'yearly' },
-      { key: 4, text: 'Enterprise', value: 'enterprise' },
+      { key: 1, text: 'Community', name: 'community', value: 'community' },
+      { key: 2, text: 'Monthly', name: 'monthly', value: 'monthly' },
+      { key: 3, text: 'Yearly', name: 'yearly', value: 'yearly' },
+      { key: 4, text: 'Enterprise', name: 'manager', value: 'enterprise' }
     ];
 
     return (
@@ -134,8 +151,20 @@ class RegistrationForm extends Component {
 }
 
 const registerUser = gql`
-  mutation($username: String!, $email: String!, $password: String!) {
-    register(username: $username, email: $email, password: $password) {
+  mutation(
+    $username: String!
+    $email: String!
+    $password: String!
+    $manager: String!
+    $subscriptionType: String!
+  ) {
+    register(
+      username: $username
+      email: $email
+      password: $password
+      manager: $manager
+      subscriptionType: $subscriptionType
+    ) {
       ok
       errors {
         path
