@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Segment, Form } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import './RegistrationForm.css';
 
 class RegistrationForm extends Component {
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
+
   state = {
     username: '',
     usernameError: '',
@@ -13,17 +21,7 @@ class RegistrationForm extends Component {
     password: '',
     passwordError: '',
     manager: '',
-    subscriptionType: ''
-  };
-
-  onSelection = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  onSelection = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+    subscriptionType: '',
   };
 
   onChange = e => {
@@ -37,18 +35,19 @@ class RegistrationForm extends Component {
       emailError: '',
       passwordError: '',
       manager: '',
-      subscriptionType: ''
+      subscriptionType: '',
     });
 
+    const { match, location, history } = this.props;
     const { username, email, password, manager, subscriptionType } = this.state;
     const response = await this.props.mutate({
-      variables: { username, email, password, manager, subscriptionType }
+      variables: { username, email, password, manager, subscriptionType },
     });
 
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      console.log('user registered');
+      this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -67,19 +66,19 @@ class RegistrationForm extends Component {
       emailError,
       passwordError,
       manager,
-      subscriptionType
+      subscriptionType,
     } = this.state;
 
     const accountTypes = [
       { key: 1, text: 'Manager', name: 'manager', value: 'manager' },
-      { key: 2, text: 'Employee', name: 'employee', value: 'employee' }
+      { key: 2, text: 'Employee', name: 'employee', value: 'employee' },
     ];
 
     const subscriptionOptions = [
       { key: 1, text: 'Community', name: 'community', value: 'community' },
       { key: 2, text: 'Monthly', name: 'monthly', value: 'monthly' },
       { key: 3, text: 'Yearly', name: 'yearly', value: 'yearly' },
-      { key: 4, text: 'Enterprise', name: 'manager', value: 'enterprise' }
+      { key: 4, text: 'Enterprise', name: 'manager', value: 'enterprise' },
     ];
 
     return (
@@ -169,4 +168,4 @@ const registerUser = gql`
   }
 `;
 
-export default graphql(registerUser)(RegistrationForm);
+export default graphql(registerUser)(withRouter(RegistrationForm));
