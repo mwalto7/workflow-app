@@ -4,6 +4,8 @@ import { extendObservable } from 'mobx';
 import { Segment, Form, Message } from 'semantic-ui-react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import './LoginForm.css';
 
 class Login extends Component {
@@ -12,14 +14,21 @@ class Login extends Component {
     extendObservable(this, {
       email: '',
       password: '',
-      errors: {}
+      errors: {},
     });
   }
 
+  static propTypes = {
+    match: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
+  };
+
   onSubmit = async () => {
+    const { match, location, history } = this.props;
     const { email, password } = this;
     const response = await this.props.mutate({
-      variables: { email, password }
+      variables: { email, password },
     });
 
     const { ok, token, refreshToken, errors } = response.data.login;
@@ -27,6 +36,7 @@ class Login extends Component {
     if (ok) {
       localStorage.setItem('token', token);
       localStorage.setItem('refreshToken', refreshToken);
+      this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -101,4 +111,4 @@ const login = gql`
   }
 `;
 
-export default graphql(login)(observer(Login));
+export default withRouter(graphql(login)(observer(Login)));
