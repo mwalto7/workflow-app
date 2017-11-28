@@ -5,7 +5,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import './LoginPage.css';
 
 const LoginPage = () => (
-  <div>
+  <div style={{ background: '#4f5d75' }}>
     <Link to="/">
       <Icon
         name="arrow circle left"

@@ -5,7 +5,7 @@ import RegistrationForm from '../../components/RegistrationForm/RegistrationForm
 import './RegistrationPage.css';
 
 const RegistrationPage = () => (
-  <div>
+  <div style={{ background: '#4f5d75' }}>
     <Link to="/">
       <Icon
         className="backButton"
