@@ -54,6 +54,15 @@ const Footer = () => (
                   as={Link}
                   to="/"
                   circular
+                  color="black"
+                  icon="github"
+                />
+              </List.Item>
+              <List.Item>
+                <Button
+                  as={Link}
+                  to="/"
+                  circular
                   color="facebook"
                   icon="facebook"
                 />
