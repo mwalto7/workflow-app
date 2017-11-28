@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import './RegistrationForm.css';
 
+
 class RegistrationForm extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
@@ -20,8 +21,13 @@ class RegistrationForm extends Component {
     emailError: '',
     password: '',
     passwordError: '',
-    manager: '',
-    subscriptionType: '',
+    // manager: '',
+    // subscriptionType: ''
+  };
+
+  onSelection = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
   };
 
   onChange = e => {
@@ -34,27 +40,30 @@ class RegistrationForm extends Component {
       usernameError: '',
       emailError: '',
       passwordError: '',
-      manager: '',
-      subscriptionType: '',
+      // manager: '',
+      // subscriptionType: ''
     });
 
-    const { match, location, history } = this.props;
-    const { username, email, password, manager, subscriptionType } = this.state;
+    const { username, email, password, /*manager, subscriptionType*/ } = this.state;
     const response = await this.props.mutate({
-      variables: { username, email, password, manager, subscriptionType },
+      variables: { username, email, password, /*manager, subscriptionType*/ }
     });
 
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      this.props.history.push('/');
+      // this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
+        // err['passwordError'] = 'too long..';
         err[`${path}Error`] = message;
       });
+
       this.setState(err);
     }
+
+    console.log(response);
   };
 
   render() {
@@ -149,15 +158,12 @@ const registerUser = gql`
     $username: String!
     $email: String!
     $password: String!
-    $manager: String!
-    $subscriptionType: String!
+
   ) {
     register(
       username: $username
       email: $email
       password: $password
-      manager: $manager
-      subscriptionType: $subscriptionType
     ) {
       ok
       errors {

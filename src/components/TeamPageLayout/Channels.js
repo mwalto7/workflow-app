@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const ChannelWrapper = styled.div`
   grid-column: 2;
@@ -30,24 +31,44 @@ const SideBarListItem = styled.li`
   }
 `;
 
-const SideBarListHeader = styled.li`${paddingLeft};`;
+const SideBarListHeader = styled.li`
+  ${paddingLeft};
+`;
 
-const PushLeft = styled.div`${paddingLeft};`;
+const PushLeft = styled.div`
+  ${paddingLeft};
+`;
 
-const Green = styled.span`color: #38978d;`;
+const Green = styled.span`
+  color: #38978d;
+`;
 
 const Bubble = ({ on = true }) => (on ? <Green>●</Green> : '○');
 
-const channel = ({ id, name }) => <SideBarListItem style={{ color: 'black'}} key={`channel-${id}`}># {name}</SideBarListItem>;
+const channel = ({ id, name }, teamId) => (
+  <Link key={`channel-${id}`} to={`/view-team/${teamId}/${id}`}>
+    <SideBarListItem># {name}</SideBarListItem>
+  </Link>
+);
 
-const user = ({ id, name }) => (
-  <SideBarListItem style={{ color: 'black'}} key={`user-${id}`}>
-    <Bubble /> {name}
+const user = ({ id, username }, teamId) => (
+  <SideBarListItem key={`user-${id}`}>
+    <Link to={`/view-team/user/${teamId}/${id}`}>
+      <Bubble /> {username}
+    </Link>
   </SideBarListItem>
 );
 
 export default ({
-  teamName, username, channels, users, onAddChannelClick,
+  teamName,
+  username,
+  channels,
+  users,
+  onAddChannelClick,
+  teamId,
+  onInvitePeopleClick,
+  onDirectMessageClick,
+  isOwner
 }) => (
   <ChannelWrapper>
     <PushLeft style={{ color: 'black'}}>
@@ -56,17 +77,28 @@ export default ({
     </PushLeft>
     <div>
       <SideBarList>
-        <SideBarListHeader style={{ color: 'black'}}>
-          Channels <Icon onClick={onAddChannelClick} name="add circle" />
+        <SideBarListHeader>
+          Channels{' '}
+          {isOwner && <Icon onClick={onAddChannelClick} name="add circle" />}
         </SideBarListHeader>
-        {channels.map(channel)}
+        {channels.map(c => channel(c, teamId))}
       </SideBarList>
     </div>
     <div>
       <SideBarList>
-        <SideBarListHeader style={{ color: 'black'}}>Direct Messages</SideBarListHeader>
-        {users.map(user)}
+        <SideBarListHeader>
+          Direct Messages{' '}
+          <Icon onClick={onDirectMessageClick} name="add circle" />
+        </SideBarListHeader>
+        {users.map(u => user(u, teamId))}
       </SideBarList>
     </div>
+    {isOwner && (
+      <div>
+        <a href="#invite-people" onClick={onInvitePeopleClick}>
+          + Invite People
+        </a>
+      </div>
+    )}
   </ChannelWrapper>
 );
