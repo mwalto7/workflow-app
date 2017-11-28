@@ -2,8 +2,10 @@ import Sequelize from 'sequelize';
 
 const sequelize = new Sequelize('workflow', 'postgres', 'postgres', {
   dialect: 'postgres',
-  define: { underscored: true },
-  operatorsAliases: Sequelize.Op,  
+  operatorsAliases: Sequelize.Op,
+  define: {
+    underscored: true
+  }
 });
 
 const models = {
@@ -11,9 +13,12 @@ const models = {
   Channel: sequelize.import('./channel'),
   Message: sequelize.import('./message'),
   Team: sequelize.import('./team'),
+  Member: sequelize.import('./member'),
+  DirectMessage: sequelize.import('./directMessage'),
 };
 
-Object.keys(models).forEach((modelName) => {
+
+Object.keys(models).forEach(modelName => {
   if ('associate' in models[modelName]) {
     models[modelName].associate(models);
   }
