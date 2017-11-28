@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Icon } from 'semantic-ui-react';
 
 const ChannelWrapper = styled.div`
   grid-column: 2;
@@ -29,23 +30,15 @@ const SideBarListItem = styled.li`
   }
 `;
 
-const SideBarListHeader = styled.li`
-  ${paddingLeft};
-`;
+const SideBarListHeader = styled.li`${paddingLeft};`;
 
-const PushLeft = styled.div`
-  ${paddingLeft};
-`;
+const PushLeft = styled.div`${paddingLeft};`;
 
-const Green = styled.span`
-  color: #38978d;
-`;
+const Green = styled.span`color: #38978d;`;
 
 const Bubble = ({ on = true }) => (on ? <Green>●</Green> : '○');
 
-const channel = ({ id, name }) => (
-  <SideBarListItem key={`channel-${id}`}># {name}</SideBarListItem>
-);
+const channel = ({ id, name }) => <SideBarListItem key={`channel-${id}`}># {name}</SideBarListItem>;
 
 const user = ({ id, name }) => (
   <SideBarListItem key={`user-${id}`}>
@@ -53,7 +46,9 @@ const user = ({ id, name }) => (
   </SideBarListItem>
 );
 
-export default ({ teamName, username, channels, users }) => (
+export default ({
+  teamName, username, channels, users, onAddChannelClick,
+}) => (
   <ChannelWrapper>
     <PushLeft>
       <TeamNameHeader>{teamName}</TeamNameHeader>
@@ -61,7 +56,9 @@ export default ({ teamName, username, channels, users }) => (
     </PushLeft>
     <div>
       <SideBarList>
-        <SideBarListHeader>Channels</SideBarListHeader>
+        <SideBarListHeader>
+          Channels <Icon onClick={onAddChannelClick} name="add circle" />
+        </SideBarListHeader>
         {channels.map(channel)}
       </SideBarList>
     </div>

@@ -62,6 +62,7 @@ class Pricing extends Component {
         name={props.name}
         raised={activeItem === props.name}
         onClick={this.handleItemClick}
+        centered
       >
         <Icon name={props.imgSrc} size='massive' color='black' fitted/>
         <Card.Content>
