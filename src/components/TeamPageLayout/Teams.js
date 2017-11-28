@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 
 const TeamWrapper = styled.div`
   grid-column: 1;
@@ -42,6 +43,14 @@ const team = ({ id, letter }) => (
 
 export default ({ teams }) => (
   <TeamWrapper>
+    <Button
+      fluid
+      content="Log Out"
+      as={Link}
+      to="/"
+      attached="top"
+      color="black"
+    />
     <TeamList>{teams.map(team)}</TeamList>
   </TeamWrapper>
 );

@@ -50,7 +50,12 @@ const Footer = () => (
           <Grid.Column width={4}>
             <List link inverted horizontal>
               <List.Item>
-                <Button href="https://github.com/mwalto7/workflow-app" circular color="black" icon="github" />
+                <Button
+                  href="https://github.com/mwalto7/workflow-app"
+                  circular
+                  color="black"
+                  icon="github"
+                />
               </List.Item>
               <List.Item>
                 <Button
