@@ -8,4 +8,5 @@ export default styled.div`
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
+  background-color: #bfc0c0;
 `;
