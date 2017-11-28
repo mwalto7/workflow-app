@@ -4,6 +4,7 @@ import Header from '../components/TeamPageLayout/Header';
 import Messages from '../components/TeamPageLayout/Messages';
 import SendMessage from '../components/TeamPageLayout/SendMessage';
 import AppLayout from '../components/TeamPageLayout/AppLayout';
+import openAddChannelModal from '../components/TeamPageLayout/AddChannelModal';
 import Sidebar from '../containers/Sidebar';
 
 
