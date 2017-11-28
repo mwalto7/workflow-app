@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 
 const TeamWrapper = styled.div`
   grid-column: 1;
   grid-row: 1 / 4;
-  background-color: #362234;
+  background-color: #2d3142;
   color: #958993;
 `;
 
@@ -18,7 +19,7 @@ const TeamList = styled.ul`
 const TeamListItem = styled.li`
   height: 50px;
   width: 50px;
-  background-color: #676066;
+  background-color: #ef8354;
   color: #fff;
   margin: auto;
   margin-bottom: 10px;
