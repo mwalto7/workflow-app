@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { Header, Message, Grid } from 'semantic-ui-react';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import './RegistrationPage.css';

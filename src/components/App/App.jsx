@@ -5,6 +5,8 @@ import RegistrationPage from '../../containers/RegistrationPage/RegistrationPage
 import LoginPage from '../../containers/LoginPage/LoginPage';
 import CreateTeam from '../../containers/CreateTeam';
 import ViewTeam from '../../containers/ViewTeam';
+import DirectMessages from '../../containers/DirectMessages';
+
 import decode from 'jwt-decode';
 
 const isAuthenticated = () => {
@@ -24,15 +26,16 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      (isAuthenticated() ? (
+      isAuthenticated() ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: '/login'
           }}
         />
-      ))}
+      )
+    }
   />
 ); // const isAuthenticated and PrivateRoute are used to verify/ reroute unauthenticated users
 
@@ -43,7 +46,17 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
-        <Route path="/view-team/:teamId?/:channelId?" exact component={ViewTeam} />  {/*how to make optional parameters*/}
+        <PrivateRoute
+          path="/view-team/user/:teamId/:userId"
+          exact
+          component={DirectMessages}
+        />
+        <PrivateRoute
+          path="/view-team/:teamId?/:channelId?"
+          exact
+          component={ViewTeam}
+        />
+        {/*how to make optional parameters*/}
         <PrivateRoute path="/create-team" exact component={CreateTeam} />
       </Switch>
     );
@@ -51,3 +64,5 @@ class App extends Component {
 }
 
 export default App;
+
+

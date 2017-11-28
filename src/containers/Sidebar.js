@@ -1,80 +1,85 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import findIndex from 'lodash/findIndex';
-import decode from 'jwt-decode';
 
-import Channels from  '../components/TeamPageLayout/Channels';
-import Teams from  '../components/TeamPageLayout/Teams';
+import Channels from '../components/TeamPageLayout/Channels';
+import Teams from '../components/TeamPageLayout/Teams';
 import AddChannelModal from '../components/TeamPageLayout/AddChannelModal';
+import InvitePeopleModal from '../components/TeamPageLayout/InvitePeopleModal';
+import DirectMessageModal from '../components/TeamPageLayout/DirectMessageModal';
 
-
-class Sidebar extends React.Component {
+export default class Sidebar extends React.Component {
   state = {
     openAddChannelModal: false,
+    openInvitePeopleModal: false,
+    openDirectMessageModal: false
   };
 
-  handleCloseAddChannelModal = () => {
-    this.setState({ openAddChannelModal: false });
+  toggleDirectMessageModal = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    this.setState(state => ({
+      openDirectMessageModal: !state.openDirectMessageModal
+    }));
   };
 
-  handleAddChannelClick = () => {
-    this.setState({ openAddChannelModal: true });
+  toggleAddChannelModal = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    this.setState(state => ({
+      openAddChannelModal: !state.openAddChannelModal
+    }));
+  };
+
+  toggleInvitePeopleModal = e => {
+    if (e) {
+      e.preventDefault();
+    }
+    this.setState(state => ({
+      openInvitePeopleModal: !state.openInvitePeopleModal
+    }));
   };
 
   render() {
-    const { data: { loading, allTeams }, currentTeamId } = this.props;
-    if (loading) {
-      return null;
-    }
-
-    const teamIdx = currentTeamId ? findIndex(allTeams, ['id', parseInt(currentTeamId, 10)]) : 0;
-    const team = allTeams[teamIdx];
-    let username = '';
-    try {
-      const token = localStorage.getItem('token');
-      const { user } = decode(token);
-      // eslint-disable-next-line prefer-destructuring
-      username = user.username;
-    } catch (err) {}
+    const { teams, team, username } = this.props;
+    const {
+      openInvitePeopleModal,
+      openAddChannelModal,
+      openDirectMessageModal
+    } = this.state;
 
     return [
-      <Teams
-        key="team-sidebar"
-        teams={allTeams.map(t => ({
-          id: t.id,
-          letter: t.name.charAt(0).toUpperCase(),
-        }))}
-      />,
+      <Teams key="team-sidebar" teams={teams} />,
       <Channels
         key="channels-sidebar"
         teamName={team.name}
         username={username}
+        teamId={team.id}
         channels={team.channels}
-        users={[{ id: 1, name: 'slackbot' }, { id: 2, name: 'user1' }]}
-        onAddChannelClick={this.handleAddChannelClick}
+        users={team.directMessageMembers}
+        onAddChannelClick={this.toggleAddChannelModal}
+        onInvitePeopleClick={this.toggleInvitePeopleModal}
+        onDirectMessageClick={this.toggleDirectMessageModal}
+        isOwner={team.admin}
+      />,
+      <DirectMessageModal
+        teamId={team.id}
+        onClose={this.toggleDirectMessageModal}
+        open={openDirectMessageModal}
+        key="sidebar-direct-message-modal"
       />,
       <AddChannelModal
-        teamId={currentTeamId}
-        onClose={this.handleCloseAddChannelModal}
-        open={this.state.openAddChannelModal}
+        teamId={team.id}
+        onClose={this.toggleAddChannelModal}
+        open={openAddChannelModal}
         key="sidebar-add-channel-modal"
       />,
+      <InvitePeopleModal
+        teamId={team.id}
+        onClose={this.toggleInvitePeopleModal}
+        open={openInvitePeopleModal}
+        key="invite-people-modal"
+      />
     ];
   }
 }
-
-const allTeamsQuery = gql`
-  {
-    allTeams {
-      id
-      name
-      channels {
-        id
-        name
-      }
-    }
-  }
-`;
-
-export default graphql(allTeamsQuery)(Sidebar);

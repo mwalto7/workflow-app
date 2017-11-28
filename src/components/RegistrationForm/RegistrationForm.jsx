@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import { Segment, Form } from 'semantic-ui-react';
 import './RegistrationForm.css';
 
+
 class RegistrationForm extends Component {
   state = {
     username: '',
@@ -12,8 +13,8 @@ class RegistrationForm extends Component {
     emailError: '',
     password: '',
     passwordError: '',
-    manager: '',
-    subscriptionType: ''
+    // manager: '',
+    // subscriptionType: ''
   };
 
   onSelection = e => {
@@ -31,26 +32,30 @@ class RegistrationForm extends Component {
       usernameError: '',
       emailError: '',
       passwordError: '',
-      manager: '',
-      subscriptionType: ''
+      // manager: '',
+      // subscriptionType: ''
     });
 
-    const { username, email, password, manager, subscriptionType } = this.state;
+    const { username, email, password, /*manager, subscriptionType*/ } = this.state;
     const response = await this.props.mutate({
-      variables: { username, email, password, manager, subscriptionType }
+      variables: { username, email, password, /*manager, subscriptionType*/ }
     });
 
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      console.log('user registered');
+      // this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
+        // err['passwordError'] = 'too long..';
         err[`${path}Error`] = message;
       });
+
       this.setState(err);
     }
+
+    console.log(response);
   };
 
   render() {
@@ -145,15 +150,12 @@ const registerUser = gql`
     $username: String!
     $email: String!
     $password: String!
-    $manager: String!
-    $subscriptionType: String!
+
   ) {
     register(
       username: $username
       email: $email
       password: $password
-      manager: $manager
-      subscriptionType: $subscriptionType
     ) {
       ok
       errors {
