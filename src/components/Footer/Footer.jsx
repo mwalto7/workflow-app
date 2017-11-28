@@ -50,13 +50,7 @@ const Footer = () => (
           <Grid.Column width={4}>
             <List link inverted horizontal>
               <List.Item>
-                <Button
-                  as={Link}
-                  to="/"
-                  circular
-                  color="black"
-                  icon="github"
-                />
+                <Button as={Link} to="/" circular color="black" icon="github" />
               </List.Item>
               <List.Item>
                 <Button
