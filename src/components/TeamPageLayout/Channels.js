@@ -6,7 +6,7 @@ const ChannelWrapper = styled.div`
   grid-column: 2;
   grid-row: 1 / 4;
   background-color: #4f5d75;
-  color: #958993;
+  color: #000;
 `;
 
 const TeamNameHeader = styled.h1`
@@ -26,7 +26,7 @@ const SideBarListItem = styled.li`
   padding: 2px;
   ${paddingLeft};
   &:hover {
-    background: #3e313c;
+    background: #ef8354;
   }
 `;
 

@@ -43,14 +43,6 @@ const team = ({ id, letter }) => (
 
 export default ({ teams }) => (
   <TeamWrapper>
-    <Button
-      fluid
-      content="Log Out"
-      as={Link}
-      to="/"
-      attached="top"
-      color="black"
-    />
     <TeamList>{teams.map(team)}</TeamList>
   </TeamWrapper>
 );
