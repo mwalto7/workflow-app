@@ -16,29 +16,11 @@ const menuItemsRight = [
 const Account = () => (
   <div className="Account-page">
     <Container className="Account-container">
-      <Menu secondary size="huge">
-        <Menu.Menu position="left">
-          {menuItemsLeft.map(item => (
-            <Menu.Item
-              key={item.key}
-              as={NavLink}
-              // exact={item.exact}
-              to={item.to}
-              content={item.content}
-            />
-          ))}
-        </Menu.Menu>
-        <Menu.Menu position="right">
-          {menuItemsRight.map(item => (
-            <Menu.Item
-              key={item.key}
-              as={NavLink}
-              exact={item.exact}
-              to={item.to}
-              content={item.content}
-            />
-          ))}
-        </Menu.Menu>
+      <Menu secondary pointing size="huge">
+        <Menu.Item as={NavLink} to="/" content="Home" name="account-home" />
+        <Menu.Item as={NavLink} to="/" content="Schedule" name="schedule" />
+        <Menu.Item as={NavLink} to="/" content="Teams" name="teams" />
+        <Menu.Item as={NavLink} to="/" content="Logout" name="logout" />
       </Menu>
     </Container>
   </div>
