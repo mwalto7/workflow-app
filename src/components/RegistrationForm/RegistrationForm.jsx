@@ -74,8 +74,8 @@ class RegistrationForm extends Component {
       usernameError,
       emailError,
       passwordError,
-      manager,
-      subscriptionType,
+      // manager,
+      // subscriptionType,
     } = this.state;
 
     const accountTypes = [
