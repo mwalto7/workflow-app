@@ -6,7 +6,7 @@ import Pricing from '../../components/Pricing/Pricing';
 import Footer from '../../components/Footer/Footer';
 import './HomePage.css';
 
-const HomePage = ({ data: { allUsers = [] } }) => (
+const HomePage = () => (
   <div id="home" className="Page">
     <header className="Page-header">
       <Navbar />
