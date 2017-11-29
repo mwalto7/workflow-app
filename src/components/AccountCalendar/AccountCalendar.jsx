@@ -2,6 +2,39 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import './AccountCalendar.css';
 
+const DaysofMonth = [
+  { day: 1, content: 'Meeting at 4pm' },
+  { day: 2, content: '' },
+  { day: 3, content: '' },
+  { day: 4, content: '' },
+  { day: 5, content: '' },
+  { day: 6, content: '' },
+  { day: 7, content: '' },
+  { day: 8, content: '' },
+  { day: 9, content: '' },
+  { day: 10, content: '' },
+  { day: 11, content: '' },
+  { day: 12, content: '' },
+  { day: 13, content: '' },
+  { day: 14, content: '' },
+  { day: 15, content: '' },
+  { day: 16, content: 'Lunch coffee meeting' },
+  { day: 17, content: '' },
+  { day: 18, content: '' },
+  { day: 19, content: '' },
+  { day: 20, content: '' },
+  { day: 21, content: '' },
+  { day: 22, content: '' },
+  { day: 23, content: '' },
+  { day: 24, content: '' },
+  { day: 25, content: '' },
+  { day: 26, content: '' },
+  { day: 27, content: 'Project proposal turn in at 5pm' },
+  { day: 28, content: '' },
+  { day: 29, content: '' },
+  { day: 30, content: '' },
+];
+
 const AccountCalendar = () => (
   <div className="calendar">
     <header className="CalendarHeader">
@@ -48,126 +81,12 @@ const AccountCalendar = () => (
       <li className="listItem month=prev">29</li>
       <li className="listItem month=prev">30</li>
       <li className="listItem month=prev">31</li>
-      <li className="listItem">
-        1 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        2 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        3 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        4 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        5 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        6 <br />
-        <p>Meeting at 12</p>
-      </li>
-      <li className="listItem">
-        7 <br />
-        <p>Work from 12-5pm</p>
-      </li>
-      <li className="listItem">
-        8 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        9 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        10 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        11 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        12 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        13 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        14 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        15 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        16 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        17 <br />
-        <p>Dinner meeting at 7</p>
-      </li>
-      <li className="listItem">
-        18 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        19 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        20 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        21 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        22 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        23 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        24 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        25 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        26 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        27 <br />
-        <p>Lunch meeting at coffee shop</p>
-      </li>
-      <li className="listItem">
-        28 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        29 <br />
-        <p />
-      </li>
-      <li className="listItem">
-        30 <br />
-        <p />
-      </li>
+      {DaysofMonth.map(item => (
+        <li className="listItem" >
+          {item.day} <br />
+          <p>{item.content}</p>
+        </li>
+      ))}
       <li className="listItem month-next">1</li>
       <li className="listItem month-next">2</li>
     </ul>
