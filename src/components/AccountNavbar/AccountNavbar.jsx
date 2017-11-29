@@ -39,7 +39,7 @@ const AccountNavbar = () => (
           ))}
         </Menu.Menu>
         <Menu.Menu position="right">
-          <Menu.Item as={NavLink} exact to="/" content="Logout" icon="power" />
+          <Menu.Item as={NavLink} exact to="/" content="Logout" />
         </Menu.Menu>
       </Menu>
     </Container>
