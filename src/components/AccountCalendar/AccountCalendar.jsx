@@ -78,7 +78,7 @@ const AccountCalendar = () => (
       </li>
       <li className="listItem">
         8 <br />
-        <p></p>
+        <p />
       </li>
       <li className="listItem">
         9 <br />
