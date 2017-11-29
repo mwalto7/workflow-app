@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Feed, Icon, Container } from 'semantic-ui-react';
+import { Segment, Feed, Icon, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import AccountNavbar from '../../components/AccountNavbar/AccountNavbar';
 import { meQuery } from '../../components/TeamPageLayout/graphql/team';
@@ -26,65 +26,97 @@ const Account = ({ data: { me, loading } }) => {
   return (
     <div className="Account-page">
       <AccountNavbar />
-      <Link to="/view-schedule">
-        <Icon
-          link
-          circular
-          color="black"
-          name="hourglass half"
-          size="massive"
-          style={{ background: '#bfc0c0', margin: '1em' }}
-        />
-      </Link>
-      <Link to="/view-team">
-        <Icon
-          link
-          circular
-          color="black"
-          name="users"
-          size="massive"
-          style={{ background: '#bfc0c0', margin: '1em' }}
-        />
-      </Link>
-      <Segment floated="right" style={{ background: '#ef8354' }}>
-        <Feed>
-          {/* User-created teams */}
-          {teams != null &&
-            teams.map(team => (
-              <FeedEvent
-                username={username}
-                message="created"
-                name={team.name}
-              />
-            ))}
-          {/* User-created channels */}
-          {teams != null &&
-            teams.map(
-              team =>
-                team.channels != null &&
-                team.channels.map(channel => (
+      <Grid columns={3} stackable relaxed>
+        <Grid.Column>
+          <Link to="/view-schedule">
+            <Icon
+              link
+              circular
+              color="black"
+              name="hourglass half"
+              size="massive"
+              style={{ background: '#bfc0c0', margin: '1em' }}
+            />
+            <h1
+              style={{
+                color: '#bfc0c0',
+                textAlign: 'center',
+                fontSize: '5em',
+                marginTop: '-1em',
+                fontWeight: 'bold',
+                paddingLeft: '1em'
+              }}
+            >
+              Schedule
+            </h1>
+          </Link>
+        </Grid.Column>
+        <Grid.Column>
+          <Link to="/view-team">
+            <Icon
+              link
+              circular
+              color="black"
+              name="users"
+              size="massive"
+              style={{ background: '#bfc0c0', margin: '1em' }}
+            />
+            <h1
+              style={{
+                color: '#bfc0c0',
+                textAlign: 'center',
+                fontSize: '5em',
+                marginTop: '-1em',
+                fontWeight: 'bold',
+                paddingLeft: '1em'
+              }}
+            >
+              Team
+            </h1>
+          </Link>
+        </Grid.Column>
+        <Grid.Column>
+          <Segment floated="right" style={{ background: '#ef8354' }}>
+            <Feed>
+              {/* User-created teams */}
+              {teams != null &&
+                teams.map(team => (
                   <FeedEvent
                     username={username}
                     message="created"
-                    name={channel.name}
+                    name={team.name}
                   />
-                )),
-            )}
-          {/* Channel members */}
-          {teams != null &&
-            teams.map(
-              team =>
-                team.directMessageMembers != null &&
-                team.directMessageMembers.map(channel => (
-                  <FeedEvent
-                    username={username}
-                    message="created"
-                    name={channel.name}
-                  />
-                )),
-            )}
-        </Feed>
-      </Segment>
+                ))}
+              {/* User-created channels */}
+              {teams != null &&
+                teams.map(
+                  team =>
+                    team.channels != null &&
+                    team.channels.map(channel => (
+                      <FeedEvent
+                        username={username}
+                        message="created"
+                        name={channel.name}
+                      />
+                    )),
+                )}
+              {/* Channel members */}
+              {teams != null &&
+                teams.map(
+                  team =>
+                    team.directMessageMembers != null &&
+                    team.directMessageMembers.map(channel => (
+                      <FeedEvent
+                        username={username}
+                        message="created"
+                        name={channel.name}
+                      />
+                    )),
+                )}
+            </Feed>
+          </Segment>
+        </Grid.Column>
+      </Grid>
     </div>
   );
 };
