@@ -1,6 +1,6 @@
 import React from 'react';
-// import { graphql } from 'react-apollo';
-// import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import Navbar from '../../components/Navbar/Navbar';
 import Hero from '../../components/Hero/Hero';
@@ -9,7 +9,7 @@ import Pricing from '../../components/Pricing/Pricing';
 import Footer from '../../components/Footer/Footer';
 import './HomePage.css';
 
-const HomePage = () => (
+const HomePage = ({ data: { allUsers = [] } }) => (
   <div id="home" className="Page">
     <header className="Page-header">
       <Navbar />
@@ -23,13 +23,13 @@ const HomePage = () => (
   </div>
 );
 
-// const allUsersQuery = gql`
-// {
-//   allUsers {
-//     id
-//     email
-//   }
-// }
-// `;
+const allUsersQuery = gql`
+{
+  allUsers {
+    id
+    email
+  }
+}
+`;
 
-export default  HomePage;
+export default  graphql(allUsersQuery)(HomePage);

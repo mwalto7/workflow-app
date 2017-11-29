@@ -52,7 +52,7 @@ class RegistrationForm extends Component {
     const { ok, errors } = response.data.register;
 
     if (ok) {
-      // this.props.history.push('/');
+      this.props.history.push('/');
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {
@@ -74,8 +74,8 @@ class RegistrationForm extends Component {
       usernameError,
       emailError,
       passwordError,
-      manager,
-      subscriptionType,
+      // manager,
+      // subscriptionType,
     } = this.state;
 
     const accountTypes = [
