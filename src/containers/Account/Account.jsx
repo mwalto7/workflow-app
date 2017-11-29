@@ -5,7 +5,6 @@ import { meQuery } from '../../components/TeamPageLayout/graphql/team';
 import { graphql } from 'react-apollo';
 import './Account.css';
 
-<<<<<<< HEAD
 const FeedEvent = ({ id, username, name, message }) => (
   <Feed.Event>
     <Feed.Label icon="user" />
@@ -14,13 +13,6 @@ const FeedEvent = ({ id, username, name, message }) => (
       <Feed.Summary>{`${username} ${message} ${name}`}</Feed.Summary>
     </Feed.Content>
   </Feed.Event>
-=======
-const Account = () => (
-  <div className="Navbar-container">
-    <AccountNavbar />
-    <h1 style={{ color: 'white'}}>Welcome to Workflow</h1>
-  </div>
->>>>>>> dcb739e775041bfc35d787b36a9625837be25eda
 );
 
 const Account = ({ data: { me, loading } }) => {
@@ -32,11 +24,10 @@ const Account = ({ data: { me, loading } }) => {
 
   return (
     <div className="Account-page">
-      <header className="Account-nav">
-        <AccountNavbar />
-      </header>
+      <AccountNavbar />
       <Segment floated="right">
         <Feed>
+          {/* User-created teams */}
           {teams != null &&
             teams.map(team => (
               <FeedEvent
@@ -45,15 +36,31 @@ const Account = ({ data: { me, loading } }) => {
                 name={team.name}
               />
             ))}
+          {/* User-created cchannels */}
           {teams != null &&
-            teams.map(team =>
-              team.channels.map(channel => (
-                <FeedEvent
-                  username={username}
-                  message="created"
-                  name={channel.name}
-                />
-              )),
+            teams.map(
+              team =>
+                team.channels != null &&
+                team.channels.map(channel => (
+                  <FeedEvent
+                    username={username}
+                    message="created"
+                    name={channel.name}
+                  />
+                )),
+            )}
+          {/* Channel members */}
+          {teams != null &&
+            teams.map(
+              team =>
+                team.directMessageMembers != null &&
+                team.directMessageMembers.map(channel => (
+                  <FeedEvent
+                    username={username}
+                    message="created"
+                    name={channel.name}
+                  />
+                )),
             )}
         </Feed>
       </Segment>
