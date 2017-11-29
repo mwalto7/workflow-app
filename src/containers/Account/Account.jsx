@@ -1,5 +1,6 @@
 import React from 'react';
-import { Segment, Feed, Icon } from 'semantic-ui-react';
+import { Segment, Feed, Icon, Container } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import AccountNavbar from '../../components/AccountNavbar/AccountNavbar';
 import { meQuery } from '../../components/TeamPageLayout/graphql/team';
 import { graphql } from 'react-apollo';
@@ -25,20 +26,26 @@ const Account = ({ data: { me, loading } }) => {
   return (
     <div className="Account-page">
       <AccountNavbar />
-      <Icon
-        link
-        circular
-        name="hourglass half"
-        size="massive"
-        style={{ background: '#bfc0c0', margin: '1em' }}
-      />
-      <Icon
-        link
-        circular
-        name="users"
-        size="massive"
-        style={{ background: '#bfc0c0', margin: '1em' }}
-      />
+      <Link to="/view-schedule">
+        <Icon
+          link
+          circular
+          color="black"
+          name="hourglass half"
+          size="massive"
+          style={{ background: '#bfc0c0', margin: '1em' }}
+        />
+      </Link>
+      <Link to="/view-team">
+        <Icon
+          link
+          circular
+          color="black"
+          name="users"
+          size="massive"
+          style={{ background: '#bfc0c0', margin: '1em' }}
+        />
+      </Link>
       <Segment floated="right" style={{ background: '#ef8354' }}>
         <Feed>
           {/* User-created teams */}
