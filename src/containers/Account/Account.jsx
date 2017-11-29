@@ -5,6 +5,7 @@ import { meQuery } from '../../components/TeamPageLayout/graphql/team';
 import { graphql } from 'react-apollo';
 import './Account.css';
 
+<<<<<<< HEAD
 const FeedEvent = ({ id, username, name, message }) => (
   <Feed.Event>
     <Feed.Label icon="user" />
@@ -13,6 +14,13 @@ const FeedEvent = ({ id, username, name, message }) => (
       <Feed.Summary>{`${username} ${message} ${name}`}</Feed.Summary>
     </Feed.Content>
   </Feed.Event>
+=======
+const Account = () => (
+  <div className="Navbar-container">
+    <AccountNavbar />
+    <h1 style={{ color: 'white'}}>Welcome to Workflow</h1>
+  </div>
+>>>>>>> dcb739e775041bfc35d787b36a9625837be25eda
 );
 
 const Account = ({ data: { me, loading } }) => {
