@@ -78,7 +78,7 @@ const AccountCalendar = () => (
       </li>
       <li className="listItem">
         8 <br />
-        <p />
+        <p></p>
       </li>
       <li className="listItem">
         9 <br />
@@ -114,7 +114,7 @@ const AccountCalendar = () => (
       </li>
       <li className="listItem">
         17 <br />
-        <p />
+        <p>Dinner meeting at 7</p>
       </li>
       <li className="listItem">
         18 <br />
@@ -154,7 +154,7 @@ const AccountCalendar = () => (
       </li>
       <li className="listItem">
         27 <br />
-        <p />
+        <p>Lunch meeting at coffee shop</p>
       </li>
       <li className="listItem">
         28 <br />
