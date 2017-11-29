@@ -1,16 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Container, Icon } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import style from './AccountNavbar.css';
 
 const menuItemsLeft = [
   { key: 'home', to: '/account/home', content: 'Home', icon: 'home' },
   { key: 'schedule', to: '/view-schedule', content: 'Schedule', icon: 'hourglass half' },
   { key: 'teams', to: '/view-team', content: 'Teams', icon: 'users' },
-];
-
-const menuItemsRight = [
-  { key: 'logout', exact: true, to: '/', content: 'Logout', icon: 'power' },
 ];
 
 const AccountNavbar = () => (
