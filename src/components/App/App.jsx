@@ -6,6 +6,8 @@ import LoginPage from '../../containers/LoginPage/LoginPage';
 import CreateTeam from '../../containers/CreateTeam';
 import ViewTeam from '../../containers/ViewTeam';
 import DirectMessages from '../../containers/DirectMessages';
+import AccountHome from '../../containers/Account/Account';
+import AccountCalendar from '../../containers/ViewCalendar';
 
 import decode from 'jwt-decode';
 
@@ -31,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/login'
+            pathname: '/login',
           }}
         />
       )
@@ -56,6 +58,12 @@ class App extends Component {
           exact
           component={ViewTeam}
         />
+        <PrivateRoute
+          path="/view-schedule/:userId?"
+          exact
+          component={AccountCalendar}
+        />
+        <PrivateRoute path="/account/:userId?" exact component={AccountHome} />
         {/*how to make optional parameters*/}
         <PrivateRoute path="/create-team" exact component={CreateTeam} />
       </Switch>
@@ -64,5 +72,3 @@ class App extends Component {
 }
 
 export default App;
-
-

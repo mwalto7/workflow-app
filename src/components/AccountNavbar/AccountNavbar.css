@@ -1,0 +1,20 @@
+div.ui.secondary.pointing.menu {
+  border-bottom: none;
+}
+
+div.ui.secondary.pointing.menu a.item {
+  justify-content: center;
+  color: #ffffff;
+  border-bottom: none;
+}
+
+div.ui.secondary.pointing.menu a.item:hover {
+  color: #bfc0c0;
+}
+
+div.ui.secondary.pointing.menu a.item.active,
+div.ui.secondary.pointing.menu a.item.active:hover {
+  color: #ef8354;
+  font-weight: 700;
+  border-bottom: none;
+}

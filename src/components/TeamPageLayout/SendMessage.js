@@ -6,6 +6,7 @@ import { withFormik } from 'formik';
 const SendMessageWrapper = styled.div`
   grid-column: 3;
   padding: 20px;
+  background-color: #bfc0c0;
 `;
 
 const ENTER_KEY = 13;

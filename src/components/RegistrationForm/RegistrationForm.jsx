@@ -52,7 +52,11 @@ class RegistrationForm extends Component {
     const { ok, errors } = response.data.register;
 
     if (ok) {
+<<<<<<< HEAD
       this.props.history.push('/');
+=======
+      this.props.history.push('/account');
+>>>>>>> 257c018f473b7ddd475a5b31cce18210ca3d1fa9
     } else {
       const err = {};
       errors.forEach(({ path, message }) => {

@@ -1,29 +1,50 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, Container } from 'semantic-ui-react';
-import style from './Account.css';
+import { Segment, Feed } from 'semantic-ui-react';
+import AccountNavbar from '../../components/AccountNavbar/AccountNavbar';
+import { meQuery } from '../../components/TeamPageLayout/graphql/team';
+import { graphql } from 'react-apollo';
+import './Account.css';
 
-const menuItemsLeft = [
-  { key: 'home', to: '/account/home', content: 'Home' },
-  { key: 'schedule', to: '/account/schedule', content: 'Schedule' },
-  { key: 'teams', to: '/account/teams', content: 'Teams' },
-];
-
-const menuItemsRight = [
-  { key: 'logout', exact: true, to: '/', content: 'Logout' },
-];
-
-const Account = () => (
-  <div className="Account-page">
-    <Container className="Account-container">
-      <Menu secondary pointing size="huge">
-        <Menu.Item as={NavLink} to="/" content="Home" name="account-home" />
-        <Menu.Item as={NavLink} to="/" content="Schedule" name="schedule" />
-        <Menu.Item as={NavLink} to="/" content="Teams" name="teams" />
-        <Menu.Item as={NavLink} to="/" content="Logout" name="logout" />
-      </Menu>
-    </Container>
-  </div>
+const FeedEvent = ({ id, username, name }) => (
+  <Feed.Event>
+    <Feed.Label icon="user" />
+    <Feed.Content>
+      <Feed.Date>3 days ago</Feed.Date>
+      <Feed.Summary>{`${username} created ${name}`}</Feed.Summary>
+    </Feed.Content>
+  </Feed.Event>
 );
 
-export default Account;
+const Account = ({ data: { me, loading } }) => {
+  if (loading) {
+    return null;
+  }
+
+  const { username, teams } = me;
+
+  return (
+    <div className="Account-page">
+      <header className="Account-nav">
+        <AccountNavbar />
+      </header>
+      <Segment floated="right">
+        <Feed>
+          {teams != null &&
+            teams.map(team => (
+              <FeedEvent username={username} name={team.name} />
+            ))}
+          {teams != null &&
+            teams.map(team =>
+              team.channels.map(channel => (
+                <FeedEvent username={username} name={channel.name} />
+              )),
+            )}
+        </Feed>
+      </Segment>
+    </div>
+  );
+};
+
+export default graphql(meQuery, { options: { fetchPolicy: 'network-only' } })(
+  Account,
+);
