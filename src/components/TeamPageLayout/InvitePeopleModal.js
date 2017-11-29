@@ -15,7 +15,7 @@ const InvitePeopleModal = ({
   handleSubmit,
   isSubmitting,
   touched,
-  errors
+  errors,
 }) => (
   <Modal open={open} onClose={onClose}>
     <Modal.Header>Add People to your Team</Modal.Header>
@@ -63,10 +63,10 @@ export default compose(
     mapPropsToValues: () => ({ email: '' }),
     handleSubmit: async (
       values,
-      { props: { onClose, teamId, mutate }, setSubmitting, setErrors }
+      { props: { onClose, teamId, mutate }, setSubmitting, setErrors },
     ) => {
       const response = await mutate({
-        variables: { teamId, email: values.email }
+        variables: { teamId, email: values.email },
       });
       const { ok, errors } = response.data.addTeamMember;
       if (ok) {
@@ -74,18 +74,8 @@ export default compose(
         setSubmitting(false);
       } else {
         setSubmitting(false);
-        const errorsLength = errors.length;
-        const filteredErrors = errors.filter(
-          e => e.message !== 'user_id must be unique'
-        );
-        if (errorsLength !== filteredErrors.length) {
-          filteredErrors.push({
-            path: 'email',
-            message: 'this user is already part of the team'
-          });
-        }
-        setErrors(normalizeErrors(filteredErrors));
+        setErrors(normalizeErrors(errors));
       }
-    }
-  })
+    },
+  }),
 )(InvitePeopleModal);

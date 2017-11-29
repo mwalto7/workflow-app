@@ -14,9 +14,8 @@ const models = {
   Message: sequelize.import('./message'),
   Team: sequelize.import('./team'),
   Member: sequelize.import('./member'),
-  DirectMessage: sequelize.import('./directMessage'),
+  DirectMessage: sequelize.import('./directMessage')
 };
-
 
 Object.keys(models).forEach(modelName => {
   if ('associate' in models[modelName]) {

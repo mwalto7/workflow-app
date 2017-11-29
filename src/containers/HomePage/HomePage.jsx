@@ -9,7 +9,7 @@ import Pricing from '../../components/Pricing/Pricing';
 import Footer from '../../components/Footer/Footer';
 import './HomePage.css';
 
-const HomePage = ({ data: { allUsers = [] } }) => (
+const HomePage = () => (
   <div id="home" className="Page">
     <header className="Page-header">
       <Navbar />
@@ -18,12 +18,11 @@ const HomePage = ({ data: { allUsers = [] } }) => (
     <Features />
     <Pricing />
     <footer className="Page-footer" id="contact">
-      <Footer />
+      <Footer /> 
     </footer>
   </div>
 );
 
-<<<<<<< HEAD
 const allUsersQuery = gql`
 {
   allUsers {
@@ -33,7 +32,5 @@ const allUsersQuery = gql`
 }
 `;
 
-export default  graphql(allUsersQuery)(HomePage);
-=======
-export default  HomePage;
->>>>>>> 257c018f473b7ddd475a5b31cce18210ca3d1fa9
+export default graphql(allUsersQuery)(HomePage);
+

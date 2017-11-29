@@ -48,11 +48,7 @@ class App extends Component {
         <Route path="/" exact component={HomePage} />
         <Route path="/register" exact component={RegistrationPage} />
         <Route path="/login" exact component={LoginPage} />
-        <PrivateRoute
-          path="/view-team/user/:teamId/:userId"
-          exact
-          component={DirectMessages}
-        />
+        <PrivateRoute path="/view-team/user/:teamId/:userId" exact component={DirectMessages} />
         <PrivateRoute
           path="/view-team/:teamId?/:channelId?"
           exact

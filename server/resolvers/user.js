@@ -10,17 +10,15 @@ export default {
         {
           replacements: [user.id],
           model: models.Team,
-          raw: true
-        }
-      )
+          raw: true,
+        },
+      ),
   },
   Query: {
-    getUser: (parent, { userId }, { models }) =>
-      models.User.findOne({ where: { id: userId } }),
+    getUser: (parent, { userId }, { models }) => models.User.findOne({ where: { id: userId } }),
     allUsers: (parent, args, { models }) => models.User.findAll(),
     me: requiresAuth.createResolver((parent, args, { models, user }) =>
-      models.User.findOne({ where: { id: user.id } })
-    )
+      models.User.findOne({ where: { id: user.id } })),
   },
   Mutation: {
     login: (parent, { email, password }, { models, SECRET, SECRET2 }) =>
@@ -31,14 +29,14 @@ export default {
 
         return {
           ok: true,
-          user
+          user,
         };
       } catch (err) {
         return {
           ok: false,
-          errors: formatErrors(err, models)
+          errors: formatErrors(err, models),
         };
       }
-    }
-  }
+    },
+  },
 };

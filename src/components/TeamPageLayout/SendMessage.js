@@ -6,7 +6,6 @@ import { withFormik } from 'formik';
 const SendMessageWrapper = styled.div`
   grid-column: 3;
   padding: 20px;
-  background-color: #bfc0c0;
 `;
 
 const ENTER_KEY = 13;
@@ -17,11 +16,11 @@ const SendMessage = ({
   handleChange,
   handleBlur,
   handleSubmit,
-  isSubmitting
+  isSubmitting,
 }) => (
   <SendMessageWrapper>
     <Input
-      onKeyDown={e => {
+      onKeyDown={(e) => {
         if (e.keyCode === ENTER_KEY && !isSubmitting) {
           handleSubmit(e);
         }
@@ -38,10 +37,7 @@ const SendMessage = ({
 
 export default withFormik({
   mapPropsToValues: () => ({ message: '' }),
-  handleSubmit: async (
-    values,
-    { props: { onSubmit }, setSubmitting, resetForm }
-  ) => {
+  handleSubmit: async (values, { props: { onSubmit }, setSubmitting, resetForm }) => {
     if (!values.message || !values.message.trim()) {
       setSubmitting(false);
       return;
@@ -49,5 +45,5 @@ export default withFormik({
 
     await onSubmit(values.message);
     resetForm(false);
-  }
+  },
 })(SendMessage);

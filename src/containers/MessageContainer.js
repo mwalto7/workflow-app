@@ -82,23 +82,23 @@ class MessageContainer extends React.Component {
 }
 
 const messagesQuery = gql`
-  query($channelId: Int!) {
-    messages(channelId: $channelId) {
-      id
-      text
-      user {
-        username
-      }
-      created_at
+query($channelId: Int!) {
+  messages(channelId: $channelId) {
+    id
+    text
+    user {
+      username
     }
+    created_at
   }
+}
 `;
 
 export default graphql(messagesQuery, {
-  variables: props => ({
-    channelId: props.channelId
-  }),
-  options: {
-    fetchPolicy: 'network-only'
-  }
+variables: props => ({
+  channelId: props.channelId,
+}),
+options: {
+  fetchPolicy: 'network-only',
+},
 })(MessageContainer);

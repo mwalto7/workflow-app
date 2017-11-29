@@ -19,12 +19,12 @@ const SECRET2 = 'ljkblsjdfuwefiuwfwue823yr23absljasdaudhqud7q8d';
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')));
 
 const resolvers = mergeResolvers(
-  fileLoader(path.join(__dirname, './resolvers')),
+  fileLoader(path.join(__dirname, './resolvers'))
 );
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers
 });
 
 const app = express();
@@ -44,7 +44,7 @@ const addUser = async (req, res, next) => {
         refreshToken,
         models,
         SECRET,
-        SECRET2,
+        SECRET2
       );
       if (newTokens.token && newTokens.refreshToken) {
         res.set('Access-Control-Expose-Headers', 'x-token, x-refresh-token');
@@ -70,17 +70,17 @@ app.use(
       models,
       user: req.user,
       SECRET,
-      SECRET2,
-    },
-  })),
+      SECRET2
+    }
+  }))
 );
 
 app.use(
   '/graphiql',
   graphiqlExpress({
     endpointURL: graphqlEndpoint,
-    subscriptionsEndpoint: 'ws://localhost:8081/subscriptions',
-  }),
+    subscriptionsEndpoint: 'ws://localhost:8081/subscriptions'
+  })
 );
 
 const server = createServer(app);
@@ -104,19 +104,19 @@ models.sequelize.sync().then(() => {
                 refreshToken,
                 models,
                 SECRET,
-                SECRET2,
+                SECRET2
               );
               return { models, user: newTokens.user };
             }
           }
 
           return { models };
-        },
+        }
       },
       {
         server,
-        path: '/subscriptions',
-      },
+        path: '/subscriptions'
+      }
     );
   });
 });
