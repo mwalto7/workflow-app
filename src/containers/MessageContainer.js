@@ -12,12 +12,8 @@ const newChannelMessageSubscription = gql`
       text
       user {
         username
-        __typename
-        
       }
       created_at
-      __typename
-      
     }
   }
 `;
@@ -92,12 +88,8 @@ const messagesQuery = gql`
       text
       user {
         username
-        __typename
-        
       }
       created_at
-      __typename
-      
     }
   }
 `;

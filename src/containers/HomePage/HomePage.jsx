@@ -1,7 +1,4 @@
 import React from 'react';
-// import { graphql } from 'react-apollo';
-// import gql from 'graphql-tag';
-
 import Navbar from '../../components/Navbar/Navbar';
 import Hero from '../../components/Hero/Hero';
 import Features from '../../components/Features/Features';
@@ -23,4 +20,4 @@ const HomePage = () => (
   </div>
 );
 
-export default  HomePage;
+export default HomePage;

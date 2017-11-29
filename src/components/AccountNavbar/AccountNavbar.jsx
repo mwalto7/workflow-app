@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, Container } from 'semantic-ui-react';
+import { Menu, Container, Icon } from 'semantic-ui-react';
 import style from './AccountNavbar.css';
 
 const menuItemsLeft = [
@@ -14,10 +14,7 @@ const menuItemsRight = [
 ];
 
 const AccountNavbar = () => (
-  <div
-    className="Navbar-container"
-    style={{ background: 'black', minHeight: '3vh' }}
-  >
+  <div className="Navbar-container" style={{ minHeight: '3vh', background: 'black' }}>
     <Container>
       <Menu
         style={style}
@@ -42,17 +39,7 @@ const AccountNavbar = () => (
           ))}
         </Menu.Menu>
         <Menu.Menu position="right">
-          {menuItemsRight.map(item => (
-            <Menu.Item
-              className="Menu-item"
-              key={item.key}
-              as={NavLink}
-              exact={item.exact}
-              to={item.to}
-              content={item.content}
-              icon={item.icon}
-            />
-          ))}
+          <Menu.Item as={NavLink} exact to="/" content="Logout" icon='power'/>
         </Menu.Menu>
       </Menu>
     </Container>

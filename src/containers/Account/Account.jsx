@@ -24,11 +24,10 @@ const Account = ({ data: { me, loading } }) => {
 
   return (
     <div className="Account-page">
-      <header className="Account-nav">
-        <AccountNavbar />
-      </header>
+      <AccountNavbar />
       <Segment floated="right">
         <Feed>
+          {/* User-created teams */}
           {teams != null &&
             teams.map(team => (
               <FeedEvent
@@ -37,15 +36,31 @@ const Account = ({ data: { me, loading } }) => {
                 name={team.name}
               />
             ))}
+          {/* User-created channels */}
           {teams != null &&
-            teams.map(team =>
-              team.channels.map(channel => (
-                <FeedEvent
-                  username={username}
-                  message="created"
-                  name={channel.name}
-                />
-              )),
+            teams.map(
+              team =>
+                team.channels != null &&
+                team.channels.map(channel => (
+                  <FeedEvent
+                    username={username}
+                    message="created"
+                    name={channel.name}
+                  />
+                )),
+            )}
+          {/* Channel members */}
+          {teams != null &&
+            teams.map(
+              team =>
+                team.directMessageMembers != null &&
+                team.directMessageMembers.map(channel => (
+                  <FeedEvent
+                    username={username}
+                    message="created"
+                    name={channel.name}
+                  />
+                )),
             )}
         </Feed>
       </Segment>

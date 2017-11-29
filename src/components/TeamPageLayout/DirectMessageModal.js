@@ -13,7 +13,7 @@ const DirectMessageModal = ({
   data: { loading, getTeamMembers }
 }) => (
   <Modal open={open} onClose={onClose}>
-    <Modal.Header>Add Channel</Modal.Header>
+    <Modal.Header>Direct Message</Modal.Header>
     <Modal.Content>
       <Form>
         <Form.Field>
@@ -34,7 +34,7 @@ const DirectMessageModal = ({
               }) => (
                 <div>
                   <Input
-                    {...getInputProps({ placeholder: 'Favorite color ?' })}
+                    {...getInputProps({ placeholder: 'Send Message' })}
                     fluid
                   />
                   {isOpen ? (
