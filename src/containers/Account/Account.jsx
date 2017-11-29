@@ -1,14 +1,50 @@
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Segment, Feed } from 'semantic-ui-react';
 import AccountNavbar from '../../components/AccountNavbar/AccountNavbar';
+import { meQuery } from '../../components/TeamPageLayout/graphql/team';
+import { graphql } from 'react-apollo';
 import './Account.css';
 
-const Account = () => (
-  <div className="Account-page">
-    <header className="Account-nav">
-      <AccountNavbar />
-    </header>
-  </div>
+const FeedEvent = ({ id, username, name }) => (
+  <Feed.Event>
+    <Feed.Label icon="user" />
+    <Feed.Content>
+      <Feed.Date>3 days ago</Feed.Date>
+      <Feed.Summary>{`${username} created ${name}`}</Feed.Summary>
+    </Feed.Content>
+  </Feed.Event>
 );
 
-export default Account;
+const Account = ({ data: { me, loading } }) => {
+  if (loading) {
+    return null;
+  }
+
+  const { username, teams } = me;
+
+  return (
+    <div className="Account-page">
+      <header className="Account-nav">
+        <AccountNavbar />
+      </header>
+      <Segment floated="right">
+        <Feed>
+          {teams != null &&
+            teams.map(team => (
+              <FeedEvent username={username} name={team.name} />
+            ))}
+          {teams != null &&
+            teams.map(team =>
+              team.channels.map(channel => (
+                <FeedEvent username={username} name={channel.name} />
+              )),
+            )}
+        </Feed>
+      </Segment>
+    </div>
+  );
+};
+
+export default graphql(meQuery, { options: { fetchPolicy: 'network-only' } })(
+  Account,
+);
