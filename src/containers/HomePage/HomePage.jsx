@@ -23,17 +23,4 @@ const HomePage = ({ data: { allUsers = [] } }) => (
   </div>
 );
 
-<<<<<<< HEAD
-const allUsersQuery = gql`
-{
-  allUsers {
-    id
-    email
-  }
-}
-`;
-
-export default  graphql(allUsersQuery)(HomePage);
-=======
 export default  HomePage;
->>>>>>> 257c018f473b7ddd475a5b31cce18210ca3d1fa9
