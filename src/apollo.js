@@ -11,12 +11,12 @@ const httpLink = createHttpLink({ uri: 'http://localhost:8081/graphql' });
 const middlewareLink = setContext(() => ({
   headers: {
     'x-token': localStorage.getItem('token'),
-    'x-refresh-token': localStorage.getItem('refreshToken'),
-  },
+    'x-refresh-token': localStorage.getItem('refreshToken')
+  }
 }));
 
 const afterwareLink = new ApolloLink((operation, forward) =>
-  forward(operation).map((response) => {
+  forward(operation).map(response => {
     const { response: { headers } } = operation.getContext();
     if (headers) {
       const token = headers.get('x-token');
@@ -32,9 +32,12 @@ const afterwareLink = new ApolloLink((operation, forward) =>
     }
 
     return response;
-  }));
+  })
+);
 
-const httpLinkWithMiddleware = afterwareLink.concat(middlewareLink.concat(httpLink));
+const httpLinkWithMiddleware = afterwareLink.concat(
+  middlewareLink.concat(httpLink)
+);
 
 const wsLink = new WebSocketLink({
   uri: 'ws://localhost:8081/subscriptions',
@@ -42,13 +45,17 @@ const wsLink = new WebSocketLink({
     reconnect: true,
     connectionParams: () => ({
       token:
-        console.log('connectionParams token: ', localStorage.getItem('token')) ||
-        localStorage.getItem('token'),
+        console.log(
+          'connectionParams token: ',
+          localStorage.getItem('token')
+        ) || localStorage.getItem('token'),
       refreshToken:
-        console.log('connectionParams rtoken: ', localStorage.getItem('refreshToken')) ||
-        localStorage.getItem('refreshToken'),
-    }),
-  },
+        console.log(
+          'connectionParams rtoken: ',
+          localStorage.getItem('refreshToken')
+        ) || localStorage.getItem('refreshToken')
+    })
+  }
 });
 
 const link = split(
@@ -57,10 +64,10 @@ const link = split(
     return kind === 'OperationDefinition' && operation === 'subscription';
   },
   wsLink,
-  httpLinkWithMiddleware,
+  httpLinkWithMiddleware
 );
 
 export default new ApolloClient({
   link,
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });

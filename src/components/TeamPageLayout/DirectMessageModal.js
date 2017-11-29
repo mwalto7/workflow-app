@@ -13,13 +13,14 @@ const DirectMessageModal = ({
   data: { loading, getTeamMembers },
 }) => (
   <Modal open={open} onClose={onClose}>
-    <Modal.Header>Add Channel</Modal.Header>
+    <Modal.Header>Direct Message</Modal.Header>
     <Modal.Content>
       <Form>
         <Form.Field>
           {!loading && (
             <Downshift
               onChange={(selectedUser) => {
+                console.log(history);
                 history.push(`/view-team/user/${teamId}/${selectedUser.id}`);
                 onClose();
               }}
@@ -33,7 +34,7 @@ const DirectMessageModal = ({
                 highlightedIndex,
               }) => (
                 <div>
-                  <Input {...getInputProps({ placeholder: 'Favorite color ?' })} fluid />
+                  <Input {...getInputProps({ placeholder: 'Who are you directly messaging?' })} fluid />
                   {isOpen ? (
                     <div style={{ border: '1px solid #ccc' }}>
                       {getTeamMembers
