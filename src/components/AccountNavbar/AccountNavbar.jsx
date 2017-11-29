@@ -5,7 +5,7 @@ import style from './AccountNavbar.css';
 
 const menuItemsLeft = [
   { key: 'home', to: '/account/home', content: 'Home', icon: 'home' },
-  { key: 'schedule', to: '/view-schedule', content: 'Schedule', icon: 'calendar' },
+  { key: 'schedule', to: '/view-schedule', content: 'Schedule', icon: 'hourglass half' },
   { key: 'teams', to: '/view-team', content: 'Teams', icon: 'users' },
 ];
 

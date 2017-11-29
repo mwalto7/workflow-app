@@ -6,7 +6,7 @@ import AccountCalendar from '../components/AccountCalendar/AccountCalendar';
 const ViewSchedule = () => (
   <div>
     <AccountNavbar />
-    <AccountCalendar/>
+    <AccountCalendar />
   </div>
 );
 
