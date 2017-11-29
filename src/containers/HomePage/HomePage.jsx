@@ -1,7 +1,4 @@
 import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-
 import Navbar from '../../components/Navbar/Navbar';
 import Hero from '../../components/Hero/Hero';
 import Features from '../../components/Features/Features';
@@ -23,14 +20,4 @@ const HomePage = () => (
   </div>
 );
 
-const allUsersQuery = gql`
-{
-  allUsers {
-    id
-    email
-  }
-}
-`;
-
-export default graphql(allUsersQuery)(HomePage);
-
+export default HomePage;

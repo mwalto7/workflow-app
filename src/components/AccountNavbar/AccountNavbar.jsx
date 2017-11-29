@@ -4,25 +4,18 @@ import { Menu, Container } from 'semantic-ui-react';
 import style from './AccountNavbar.css';
 
 const menuItemsLeft = [
-  { key: 'home', to: '/account/home', content: 'Home', icon: 'home' },
+  { key: 1, to: '/account/home', content: 'Home', icon: 'home' },
   {
-    key: 'schedule',
+    key: 2,
     to: '/view-schedule',
     content: 'Schedule',
     icon: 'calendar',
   },
-  { key: 'teams', to: '/view-team', content: 'Teams', icon: 'users' },
-];
-
-const menuItemsRight = [
-  { key: 'logout', exact: true, to: '/', content: 'Logout', icon: 'power' },
+  { key: 3, to: '/view-team', content: 'Teams', icon: 'users' },
 ];
 
 const AccountNavbar = () => (
-  <div
-    className="Navbar-container"
-    style={{ background: 'black', minHeight: '3vh' }}
-  >
+  <div className="Navbar-container" style={{ minHeight: '3vh' }}>
     <Container>
       <Menu
         style={style}
@@ -42,22 +35,11 @@ const AccountNavbar = () => (
               className="nav-link"
               to={item.to}
               content={item.content}
-              icon={item.icon}
             />
           ))}
         </Menu.Menu>
         <Menu.Menu position="right">
-          {menuItemsRight.map(item => (
-            <Menu.Item
-              className="Menu-item"
-              key={item.key}
-              as={NavLink}
-              exact={item.exact}
-              to={item.to}
-              content={item.content}
-              icon={item.icon}
-            />
-          ))}
+          <Menu.Item as={NavLink} exact to="/" content="Logout" />
         </Menu.Menu>
       </Menu>
     </Container>
