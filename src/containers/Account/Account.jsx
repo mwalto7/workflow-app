@@ -36,7 +36,7 @@ const Account = ({ data: { me, loading } }) => {
                 name={team.name}
               />
             ))}
-          {/* User-created cchannels */}
+          {/* User-created channels */}
           {teams != null &&
             teams.map(
               team =>
