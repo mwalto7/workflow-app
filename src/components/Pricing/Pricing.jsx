@@ -32,7 +32,7 @@ class Pricing extends Component {
         name: 'monthly',
         header: 'Monthly',
         meta: '$15/mo',
-        imgSrc: 'calendar',
+        imgSrc: 'hourglass half',
         description:
           'Pay monthly. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
@@ -41,7 +41,7 @@ class Pricing extends Component {
         name: 'yearly',
         header: 'Yearly',
         meta: '$125/yr',
-        imgSrc: 'calendar outline',
+        imgSrc: 'hourglass full',
         description:
           'Pay yearly with a slight discount. Cancel anytime. Access to all features for one user and team with unlimited members.',
       },
