@@ -5,12 +5,12 @@ import { meQuery } from '../../components/TeamPageLayout/graphql/team';
 import { graphql } from 'react-apollo';
 import './Account.css';
 
-const FeedEvent = ({ id, username, name }) => (
+const FeedEvent = ({ id, username, name, message }) => (
   <Feed.Event>
     <Feed.Label icon="user" />
     <Feed.Content>
       <Feed.Date>3 days ago</Feed.Date>
-      <Feed.Summary>{`${username} created ${name}`}</Feed.Summary>
+      <Feed.Summary>{`${username} ${message} ${name}`}</Feed.Summary>
     </Feed.Content>
   </Feed.Event>
 );
@@ -31,12 +31,20 @@ const Account = ({ data: { me, loading } }) => {
         <Feed>
           {teams != null &&
             teams.map(team => (
-              <FeedEvent username={username} name={team.name} />
+              <FeedEvent
+                username={username}
+                message="created"
+                name={team.name}
+              />
             ))}
           {teams != null &&
             teams.map(team =>
               team.channels.map(channel => (
-                <FeedEvent username={username} name={channel.name} />
+                <FeedEvent
+                  username={username}
+                  message="created"
+                  name={channel.name}
+                />
               )),
             )}
         </Feed>
