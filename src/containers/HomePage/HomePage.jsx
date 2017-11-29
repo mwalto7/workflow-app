@@ -23,13 +23,4 @@ const HomePage = () => (
   </div>
 );
 
-// const allUsersQuery = gql`
-// {
-//   allUsers {
-//     id
-//     email
-//   }
-// }
-// `;
-
 export default  HomePage;

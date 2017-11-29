@@ -1,10 +1,13 @@
+.calendar {
+  background-color: #4f5d75;
+}
 .CalendarHeader {
   display: flex;
   align-items: center;
   font-size: calc(16px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
   justify-content: center;
   margin-bottom: 2em;
-  background: #000;
+  background: #4f5d75;
   color: #fff;
   min-height: 10vh;
   text-align: center;
@@ -32,11 +35,13 @@ ul.weekdays {
 
 ul.weekdays li {
   height: 4vw;
+  justify-content: center;
+  align-items: center;
 }
 
 ul.day-grid li {
   background-color: #ffffff;
-  border: 1px solid #eaeaea;
+  border: 1px solid #ebeaea;
   height: 12vw;
   max-height: 125px;
 }
@@ -45,6 +50,8 @@ ul.weekdays abbr[title] {
   border: none;
   font-weight: 800;
   text-decoration: none;
+  color: white;
+
 }
 
 ul.day-grid li:nth-child(1),
@@ -52,7 +59,7 @@ ul.day-grid li:nth-child(2),
 ul.day-grid li:nth-child(3),
 ul.day-grid li:nth-child(34),
 ul.day-grid li:nth-child(35) {
-  background-color: rgb(82, 82, 82);
+  background-color: rgb(172, 170, 170);
 }
 
 @media all and (max-width: 800px) {
