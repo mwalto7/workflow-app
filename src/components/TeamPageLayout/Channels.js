@@ -72,7 +72,7 @@ export default ({
   teamId,
   onInvitePeopleClick,
   onDirectMessageClick,
-  isOwner
+  isOwner,
 }) => (
   <ChannelWrapper>
     <PushLeft style={{ color: '#ef8354' }}>
@@ -94,6 +94,20 @@ export default ({
         {channels.map(c => channel(c, teamId))}
       </SideBarList>
     </div>
+    {isOwner && (
+      <div>
+        <SideBarList>
+          <SideBarListHeader style={{ color: 'white' }}>
+            Invite People to Team{' '}
+            <Icon
+              style={{ color: '#ef8354' }}
+              onClick={onInvitePeopleClick}
+              name="add circle"
+            />
+          </SideBarListHeader>
+        </SideBarList>
+      </div>
+    )}
     <div>
       <SideBarList>
         <SideBarListHeader style={{ color: 'white' }}>
@@ -107,16 +121,5 @@ export default ({
         {users.map(u => user(u, teamId))}
       </SideBarList>
     </div>
-    {isOwner && (
-      <div>
-        <a
-          style={{ color: '#bfc0c0' }}
-          href="#invite-people"
-          onClick={onInvitePeopleClick}
-        >
-          + Invite People
-        </a>
-      </div>
-    )}
   </ChannelWrapper>
 );
