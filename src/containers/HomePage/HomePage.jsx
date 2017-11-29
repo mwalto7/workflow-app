@@ -15,7 +15,7 @@ const HomePage = () => (
     <Features />
     <Pricing />
     <footer className="Page-footer" id="contact">
-      <Footer />
+      <Footer /> 
     </footer>
   </div>
 );

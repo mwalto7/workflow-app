@@ -10,43 +10,33 @@ export default class Sidebar extends React.Component {
   state = {
     openAddChannelModal: false,
     openInvitePeopleModal: false,
-    openDirectMessageModal: false
+    openDirectMessageModal: false,
   };
 
-  toggleDirectMessageModal = e => {
+  toggleDirectMessageModal = (e) => {
     if (e) {
       e.preventDefault();
     }
-    this.setState(state => ({
-      openDirectMessageModal: !state.openDirectMessageModal
-    }));
+    this.setState(state => ({ openDirectMessageModal: !state.openDirectMessageModal }));
   };
 
-  toggleAddChannelModal = e => {
+  toggleAddChannelModal = (e) => {
     if (e) {
       e.preventDefault();
     }
-    this.setState(state => ({
-      openAddChannelModal: !state.openAddChannelModal
-    }));
+    this.setState(state => ({ openAddChannelModal: !state.openAddChannelModal }));
   };
 
-  toggleInvitePeopleModal = e => {
+  toggleInvitePeopleModal = (e) => {
     if (e) {
       e.preventDefault();
     }
-    this.setState(state => ({
-      openInvitePeopleModal: !state.openInvitePeopleModal
-    }));
+    this.setState(state => ({ openInvitePeopleModal: !state.openInvitePeopleModal }));
   };
 
   render() {
     const { teams, team, username } = this.props;
-    const {
-      openInvitePeopleModal,
-      openAddChannelModal,
-      openDirectMessageModal
-    } = this.state;
+    const { openInvitePeopleModal, openAddChannelModal, openDirectMessageModal } = this.state;
 
     return [
       <Teams key="team-sidebar" teams={teams} />,
@@ -79,7 +69,7 @@ export default class Sidebar extends React.Component {
         onClose={this.toggleInvitePeopleModal}
         open={openInvitePeopleModal}
         key="invite-people-modal"
-      />
+      />,
     ];
   }
 }

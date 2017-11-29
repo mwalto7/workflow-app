@@ -10,16 +10,16 @@ const DirectMessageModal = ({
   open,
   onClose,
   teamId,
-  data: { loading, getTeamMembers }
+  data: { loading, getTeamMembers },
 }) => (
   <Modal open={open} onClose={onClose}>
-    <Modal.Header>Direct Message</Modal.Header>
+    <Modal.Header>Add Channel</Modal.Header>
     <Modal.Content>
       <Form>
         <Form.Field>
           {!loading && (
             <Downshift
-              onChange={selectedUser => {
+              onChange={(selectedUser) => {
                 history.push(`/view-team/user/${teamId}/${selectedUser.id}`);
                 onClose();
               }}
@@ -30,32 +30,23 @@ const DirectMessageModal = ({
                 isOpen,
                 inputValue,
                 selectedItem,
-                highlightedIndex
+                highlightedIndex,
               }) => (
                 <div>
-                  <Input
-                    {...getInputProps({ placeholder: 'Send Message' })}
-                    fluid
-                  />
+                  <Input {...getInputProps({ placeholder: 'Favorite color ?' })} fluid />
                   {isOpen ? (
                     <div style={{ border: '1px solid #ccc' }}>
                       {getTeamMembers
-                        .filter(
-                          i =>
+                        .filter(i =>
                             !inputValue ||
-                            i.username
-                              .toLowerCase()
-                              .includes(inputValue.toLowerCase())
-                        )
+                            i.username.toLowerCase().includes(inputValue.toLowerCase()))
                         .map((item, index) => (
                           <div
                             {...getItemProps({ item })}
                             key={item.id}
                             style={{
-                              backgroundColor:
-                                highlightedIndex === index ? 'gray' : 'white',
-                              fontWeight:
-                                selectedItem === item ? 'bold' : 'normal'
+                              backgroundColor: highlightedIndex === index ? 'gray' : 'white',
+                              fontWeight: selectedItem === item ? 'bold' : 'normal',
                             }}
                           >
                             {item.username}

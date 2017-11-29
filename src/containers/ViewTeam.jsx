@@ -16,7 +16,7 @@ import AccountNavbar from '../components/AccountNavbar/AccountNavbar';
 const ViewTeam = ({
   mutate,
   data: { loading, me },
-  match: { params: { teamId, channelId } },
+  match: { params: { teamId, channelId } }
 }) => {
   if (loading) {
     return null;
@@ -38,7 +38,6 @@ const ViewTeam = ({
     : 0;
   const channel =
     channelIdx === -1 ? team.channels[0] : team.channels[channelIdx];
-
   return (
     <div>
       <AccountNavbar />
@@ -46,7 +45,7 @@ const ViewTeam = ({
         <Sidebar
           teams={teams.map(t => ({
             id: t.id,
-            letter: t.name.charAt(0).toUpperCase(),
+            letter: t.name.charAt(0).toUpperCase()
           }))}
           team={team}
           username={username}
@@ -74,5 +73,5 @@ const createMessageMutation = gql`
 
 export default compose(
   graphql(meQuery, { options: { fetchPolicy: 'network-only' } }),
-  graphql(createMessageMutation),
+  graphql(createMessageMutation)
 )(ViewTeam);

@@ -5,34 +5,28 @@ import bcrypt from 'bcrypt';
 export const createTokens = async (user, secret, secret2) => {
   const createToken = jwt.sign(
     {
-      user: _.pick(user, ['id', 'username'])
+      user: _.pick(user, ['id', 'username']),
     },
     secret,
     {
-      expiresIn: '1h'
-    }
+      expiresIn: '1h',
+    },
   );
 
   const createRefreshToken = jwt.sign(
     {
-      user: _.pick(user, 'id')
+      user: _.pick(user, 'id'),
     },
     secret2,
     {
-      expiresIn: '7d'
-    }
+      expiresIn: '7d',
+    },
   );
 
   return [createToken, createRefreshToken];
 };
 
-export const refreshTokens = async (
-  token,
-  refreshToken,
-  models,
-  SECRET,
-  SECRET2
-) => {
+export const refreshTokens = async (token, refreshToken, models, SECRET, SECRET2) => {
   let userId = 0;
   try {
     const { user: { id } } = jwt.decode(refreshToken);
@@ -59,15 +53,11 @@ export const refreshTokens = async (
     return {};
   }
 
-  const [newToken, newRefreshToken] = await createTokens(
-    user,
-    SECRET,
-    refreshSecret
-  );
+  const [newToken, newRefreshToken] = await createTokens(user, SECRET, refreshSecret);
   return {
     token: newToken,
     refreshToken: newRefreshToken,
-    user
+    user,
   };
 };
 
@@ -77,7 +67,7 @@ export const tryLogin = async (email, password, models, SECRET, SECRET2) => {
     // user with provided email not found
     return {
       ok: false,
-      errors: [{ path: 'email', message: 'Wrong email' }]
+      errors: [{ path: 'email', message: 'Wrong email' }],
     };
   }
 
@@ -86,21 +76,17 @@ export const tryLogin = async (email, password, models, SECRET, SECRET2) => {
     // bad password
     return {
       ok: false,
-      errors: [{ path: 'password', message: 'Wrong password' }]
+      errors: [{ path: 'password', message: 'Wrong password' }],
     };
   }
 
   const refreshTokenSecret = user.password + SECRET2;
 
-  const [token, refreshToken] = await createTokens(
-    user,
-    SECRET,
-    refreshTokenSecret
-  );
+  const [token, refreshToken] = await createTokens(user, SECRET, refreshTokenSecret);
 
   return {
     ok: true,
     token,
-    refreshToken
+    refreshToken,
   };
 };
